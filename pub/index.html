@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <title>mcLearn</title>
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
+    <header>
+      <h1>mcLearn</h1>
+      <div class="buttonBox">
+        <button title="show your program as javascript" id="btnShowCode">show</button>
+        <!-- <button title="run your progrm" id="btnRunCode">run</button> -->
+        <!-- <button title="output XML for local saving" id="btnShowXml">xml</button> -->
+        <!-- <button title="settings" id="btnSettings"><i class="material-icons">settings</i></button> -->
+      </div>
+    </header>
+    <section id="blocklyArea"></section>
+    <div id="blocklyDiv"></div>
+    <xml id="blocklyToolbox">
+      <category name="Minecraft">
+        <category id="tbMCclient" name="Bot" colour="260">
+        </category>
+        <!-- <category id="tbMCserver" name="Mod" colour="120">
+        </category> -->
+      </category>
+      <category name="Colour" colour="20">
+        <block type="colour_picker"></block>
+        <block type="colour_random"></block>
+        <block type="colour_rgb"></block>
+        <block type="colour_blend"></block>
+      </category>
+      <category name="Lists" colour="260">
+        <block type="lists_create_empty"></block>
+        <block type="lists_create_with"></block>
+        <block type="lists_create_with_container"></block>
+        <block type="lists_create_with_item"></block>
+        <block type="lists_repeat"></block>
+        <block type="lists_length"></block>
+        <block type="lists_isEmpty"></block>
+        <block type="lists_indexOf"></block>
+        <block type="lists_getIndex"></block>
+        <block type="lists_setIndex"></block>
+        <block type="lists_getSublist"></block>
+        <block type="lists_split"></block>
+      </category>
+      <category name="Logic" colour="210">
+        <block type="controls_if"></block>
+        <block type="controls_if_if"></block>
+        <block type="controls_if_elseif"></block>
+        <block type="controls_if_else"></block>
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_boolean"></block>
+        <block type="logic_null"></block>
+        <block type="logic_ternary"></block>
+      </category>
+      <category name="Loops" colour="120">
+        <block type="controls_repeat_ext"></block>
+        <block type="controls_repeat"></block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for"></block>
+        <block type="controls_forEach"></block>
+        <block type="controls_flow_statements"></block>
+      </category>
+      <category name="Math" colour="230">
+        <block type="math_number"></block>
+        <block type="math_arithmetic"></block>
+        <block type="math_single"></block>
+        <block type="math_trig"></block>
+        <block type="math_constant"></block>
+        <block type="math_number_property"></block>
+        <block type="math_change"></block>
+        <block type="math_round"></block>
+        <block type="math_on_list"></block>
+        <block type="math_modulo"></block>
+        <block type="math_constrain"></block>
+        <block type="math_random_int"></block>
+        <block type="math_random_float"></block>
+      </category>
+      <category name="Text" colour="160">
+        <block type="text"></block>
+        <block type="text_join"></block>
+        <block type="text_create_join_container"></block>
+        <block type="text_create_join_item"></block>
+        <block type="text_append"></block>
+        <block type="text_length"></block>
+        <block type="text_isEmpty"></block>
+        <block type="text_indexOf"></block>
+        <block type="text_charAt"></block>
+        <block type="text_getSubstring"></block>
+        <block type="text_changeCase"></block>
+        <block type="text_trim"></block>
+        <block type="text_print"></block>
+        <block type="text_prompt_ext"></block>
+        <block type="text_prompt"></block>
+      </category>
+      <category name="Variables" custom="VARIABLE" colour="330"></category>
+      <category name="Functions" custom="PROCEDURE" colour="290"></category>
+    </xml>
+    <div id="overlay"></div>
+  </body>
+  <script src="https://blockly-demo.appspot.com/static/blockly_compressed.js"></script>
+  <script src="https://blockly-demo.appspot.com/static/blocks_compressed.js"></script>
+  <script src="https://blockly-demo.appspot.com/static/javascript_compressed.js"></script>
+  <script src="https://blockly-demo.appspot.com/static/msg/js/en.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</html>

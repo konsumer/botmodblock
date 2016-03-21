@@ -1,0 +1,22 @@
+{
+  "name": "mclearn",
+  "version": "1.0.0",
+  "description": "Learn Computer Science through Minecraft",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "David Konsumer <konsumer@jetboystudio.com>",
+  "license": "MIT",
+  "dependencies": {
+    "enchilada": "^0.13.0",
+    "express": "^4.13.4",
+    "express-static": "^1.0.3",
+    "highlight.js": "^9.2.0",
+    "minecraft-data": "^1.2.6",
+    "mineflayer": "^1.7.3",
+    "mineflayer-blockfinder": "0.0.5",
+    "mineflayer-navigate": "0.0.9",
+    "mineflayer-scaffold": "0.0.5"
+  }
+}
