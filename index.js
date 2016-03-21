@@ -4,7 +4,7 @@ var mineflayer = require('mineflayer')
 var expressStatic = require('express-static')
 var enchilada = require('enchilada')
 var app = express()
-var port = process.env.PORT || 8000
+var port = process.env.PORT || 4000
 
 var blocks = []
 for (var i in mineflayer.blocks){

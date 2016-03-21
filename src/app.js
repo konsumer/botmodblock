@@ -30,7 +30,7 @@ window.Blockly.addToolboxCategory = function (name, parent){
   workspace.updateToolbox(document.getElementById('blocklyToolbox'))
   return category
 }
-
+require('./blocks/common')
 require('./blocks/bot')
 require('./blocks/mod')
 
