@@ -18,6 +18,6 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 
 #### todo
 
-- [ ] complete support for [mineflayer](https://github.com/PrismarineJS/mineflayer)
-- [ ] get ideas from [here](http://inspiredtoeducate.net/modmaker/)
-= [ ] use these: mineflayer-blockfinder, mineflayer-navigate, mineflayer-scaffold
+-  [ ] complete support for [mineflayer](https://github.com/PrismarineJS/mineflayer)
+-  [ ] get ideas from [here](http://inspiredtoeducate.net/modmaker/)
+-  [ ] use these: mineflayer-blockfinder, mineflayer-navigate, mineflayer-scaffold
