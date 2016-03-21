@@ -39,7 +39,8 @@ Blockly.JavaScript['bot_connect_to_server'] = function(block) {
   port: ${val(block, 'port')},
   username: ${val(block, 'username')},
   password: ${val(block, 'password')}
-})`
+})
+`
 };
 
 Blockly.addToolboxItem('bot_connect_to_server', document.getElementById('tbMCclient'))

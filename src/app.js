@@ -65,8 +65,8 @@ ${hl('javascript', Blockly.JavaScript.workspaceToCode(workspace)).value}
   overlay.style.visibility = 'visible'
 })
 
-document.getElementById('btnShowXml').addEventListener('click', function(e){
-  overlay.innerHTML = `<textarea>${workspace.xmlGenerated}</textarea>`
-  overlay.style.visibility = 'visible'
-})
+// document.getElementById('btnShowXml').addEventListener('click', function(e){
+//   overlay.innerHTML = `<textarea>${workspace.xmlGenerated}</textarea>`
+//   overlay.style.visibility = 'visible'
+// })
 

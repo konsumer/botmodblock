@@ -79,9 +79,11 @@ Blockly.Blocks['bot_on_handle'] = {
 Blockly.JavaScript['bot_on_handle'] = function(block) {
   var on = block.getFieldValue('on')
   var code = Blockly.JavaScript.statementToCode(block, 'DO')
-  return `.on('${on}', function(${eventTypes[on].split('|').join(', ')}){
+  return `
+.on('${on}', function(${eventTypes[on].split('|').join(', ')}){
 ${code}
-})`
+})
+`
 };
 
 Blockly.addToolboxItem('bot_on_handle', document.getElementById('tbMCclient'))
