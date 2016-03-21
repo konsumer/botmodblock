@@ -1,3 +1,7 @@
+// /blockfactory/#data_block
+// /blockfactory/#data_item
+// /blockfactory/#data_instrument
+
 // TODO: would it be better to harcode the data into the selects?
 // It would improve code generation & reduce backend requirements...
 

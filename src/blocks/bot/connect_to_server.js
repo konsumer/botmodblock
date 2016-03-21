@@ -1,4 +1,4 @@
-// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#u34y8j
+// /blockfactory/#bot_connect_to_server
 
 var val = require('../utils').val
 

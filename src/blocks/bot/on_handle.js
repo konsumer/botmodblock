@@ -1,4 +1,4 @@
-// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#imrxy5
+// /blockfactory/#bot_on_handle
 
 var eventTypes = {
   'chat' : 'username|message|translate|jsonMsg|matches',
