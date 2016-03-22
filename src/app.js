@@ -4,6 +4,7 @@ var blocklyDiv = document.getElementById('blocklyDiv')
 var blocklyArea = document.getElementById('blocklyArea')
 var blocklyToolbox = document.getElementById('blocklyToolbox')
 var overlay = document.getElementById('overlay')
+var linkButton = document.getElementById('linkButton')
 
 var workspace = window.Blockly.inject(blocklyDiv, {
   toolbox: blocklyToolbox,
@@ -12,8 +13,7 @@ var workspace = window.Blockly.inject(blocklyDiv, {
   media: 'https://blockly-demo.appspot.com/static/media/'
 })
 
-
-window.Blockly.addToolboxItem = function (type, parent){
+window.Blockly.addToolboxItem = function (type, parent) {
   parent = parent || blocklyToolbox
   var block = document.createElement('block')
   block.setAttribute('type', type)
@@ -22,7 +22,7 @@ window.Blockly.addToolboxItem = function (type, parent){
   return block
 }
 
-window.Blockly.addToolboxCategory = function (name, parent){
+window.Blockly.addToolboxCategory = function (name, parent) {
   parent = parent || blocklyToolbox
   var category = document.createElement('category')
   category.setAttribute('name', name)
@@ -30,6 +30,28 @@ window.Blockly.addToolboxCategory = function (name, parent){
   workspace.updateToolbox(document.getElementById('blocklyToolbox'))
   return category
 }
+
+if ('BlocklyStorage' in window) {
+  BlocklyStorage.HTTPREQUEST_ERROR =
+    'There was a problem with the request.\n'
+  BlocklyStorage.LINK_ALERT =
+    'Share your blocks with this link:\n\n%1'
+  BlocklyStorage.HASH_ERROR =
+    'Sorry, "%1" doesn\'t correspond with any saved Blockly file.'
+  BlocklyStorage.XML_ERROR = 'Could not load your saved file.\n' +
+    'Perhaps it was created with a different version of Blockly?'
+  var linkButton = document.getElementById('linkButton')
+  linkButton.style.display = 'inline-block'
+  linkButton.addEventListener('click', function () {
+    BlocklyStorage.link(workspace)
+  })
+}
+
+// Create the root block.
+if ('BlocklyStorage' in window && window.location.hash.length > 1) {
+  BlocklyStorage.retrieveXml(window.location.hash.substring(1), workspace)
+}
+
 require('./blocks/common')
 require('./blocks/bot')
 require('./blocks/mod')
@@ -54,19 +76,13 @@ function onresize (e) {
 window.addEventListener('resize', onresize, false)
 onresize()
 
-overlay.addEventListener('click', function(){
+overlay.addEventListener('click', function () {
   overlay.style.visibility = 'hidden'
 })
 
-document.getElementById('btnShowCode').addEventListener('click', function(e){
+document.getElementById('btnShowCode').addEventListener('click', function (e) {
   overlay.innerHTML = `<div><pre><code>
 ${hl('javascript', Blockly.JavaScript.workspaceToCode(workspace)).value}
 </code></pre></div>`
   overlay.style.visibility = 'visible'
 })
-
-// document.getElementById('btnShowXml').addEventListener('click', function(e){
-//   overlay.innerHTML = `<textarea>${workspace.xmlGenerated}</textarea>`
-//   overlay.style.visibility = 'visible'
-// })
-
