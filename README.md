@@ -1,4 +1,4 @@
-# mcLearn
+# botmodblock
 
 Learn Computer Science through Minecraft.
 
