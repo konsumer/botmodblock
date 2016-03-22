@@ -48,15 +48,15 @@
       </category>
       <category name="Logic" colour="210">
         <block type="controls_if"></block>
-        <block type="controls_if_if"></block>
-        <block type="controls_if_elseif"></block>
-        <block type="controls_if_else"></block>
+        <!-- <block type="controls_if_if"></block> -->
+        <!-- <block type="controls_if_elseif"></block> -->
+        <!-- <block type="controls_if_else"></block> -->
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
         <block type="logic_negate"></block>
         <block type="logic_boolean"></block>
         <block type="logic_null"></block>
-        <block type="logic_ternary"></block>
+        <!-- <block type="logic_ternary"></block> -->
       </category>
       <category name="Loops" colour="120">
         <block type="controls_repeat_ext"></block>
@@ -101,7 +101,11 @@
       <category name="Variables" custom="VARIABLE" colour="330"></category>
       <category name="Functions" custom="PROCEDURE" colour="290"></category>
     </xml>
-    <div id="overlay"></div>
+    <div id="overlay">
+      <button id="overlayCloseButton"><i class="material-icons">close</i></button>
+      <div id="overlayContent">X</div>
+    </div>
+
   </body>
   <script src="https://blockly-demo.appspot.com/storage.js"></script>
   <script src="https://blockly-demo.appspot.com/static/blockly_compressed.js"></script>

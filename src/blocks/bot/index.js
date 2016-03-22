@@ -1,2 +1,5 @@
 require('./connect_to_server')
 require('./on_handle')
+require('./chat')
+require('./is_raining')
+require('./health')

@@ -1,9 +1,12 @@
 var hl = require('highlight.js').highlight
+var beautify = require('js-beautify').js_beautify
 
 var blocklyDiv = document.getElementById('blocklyDiv')
 var blocklyArea = document.getElementById('blocklyArea')
 var blocklyToolbox = document.getElementById('blocklyToolbox')
 var overlay = document.getElementById('overlay')
+var overlayCloseButton = document.getElementById('overlayCloseButton')
+var overlayContent = document.getElementById('overlayContent')
 var linkButton = document.getElementById('linkButton')
 
 var workspace = window.Blockly.inject(blocklyDiv, {
@@ -76,13 +79,14 @@ function onresize (e) {
 window.addEventListener('resize', onresize, false)
 onresize()
 
-overlay.addEventListener('click', function () {
+overlayCloseButton.addEventListener('click', function () {
   overlay.style.visibility = 'hidden'
 })
 
 document.getElementById('btnShowCode').addEventListener('click', function (e) {
-  overlay.innerHTML = `<div><pre><code>
-${hl('javascript', Blockly.JavaScript.workspaceToCode(workspace)).value}
+  var code = beautify(Blockly.JavaScript.workspaceToCode(workspace), { indent_size: 2 })
+  overlayContent.innerHTML = `<div><pre><code>
+${hl('javascript', code).value}
 </code></pre></div>`
   overlay.style.visibility = 'visible'
 })
