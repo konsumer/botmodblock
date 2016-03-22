@@ -11,8 +11,8 @@ Blockly.Blocks['bot_health'] = {
   }
 }
 
-// TODO: check bot connected and use specific bot number
-// look at block.parentBlock.previousConnection
+// TODO: validate this is in a bot/on flow
+
 Blockly.JavaScript['bot_health'] = function (block) {
   return ['bot.health()', Blockly.JavaScript.ORDER_NONE]
 }

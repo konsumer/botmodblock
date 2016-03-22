@@ -11,8 +11,8 @@ Blockly.Blocks['bot_is_raining'] = {
   }
 }
 
-// TODO: check bot connected and use specific bot number
-// look at block.parentBlock.previousConnection
+// TODO: validate this is in a bot/on flow
+
 Blockly.JavaScript['bot_is_raining'] = function (block) {
   return ['bot.isRaining()', Blockly.JavaScript.ORDER_NONE]
 }
