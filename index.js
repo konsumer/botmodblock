@@ -45,14 +45,13 @@ app.get('/instruments', function(req, res){
 
 // emulate cloud-storage feature
 app.post('/storage', function (req, res) {
-	console.log(req.body)
 	if (req.body.key){
 		fs.readFile(path.join(__dirname, 'saved', req.body.key + '.xml'), function(err, data){
 			if (err) throw new Error(err)
 			res.send(data)
 		})
 	}else if (req.body.xml){
-		var key = randomWords(5).join('_')
+		var key = randomWords(3).join('_')
 		fs.writeFile(path.join(__dirname, 'saved', key + '.xml'), req.body.xml.toString(), function(err, data){
 			if (err) throw new Error(err)
 			res.send(key)
