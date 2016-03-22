@@ -36,14 +36,6 @@ app.use(errorHandler)
 
 // TODO: actually run code
 
-var items = []
-for (var i in mineflayer.items) {
-  items.push([mineflayer.items[i].displayName, mineflayer.items[i].id])
-}
-app.get('/items', function (req, res) {
-  res.send(items)
-})
-
 // emulate cloud-storage feature
 app.post('/storage', function (req, res, next) {
   if (req.body.key) {
