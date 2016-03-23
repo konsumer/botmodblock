@@ -9,6 +9,9 @@ Blockly.Blocks['bot_forward_on'] = {
     this.setColour(260)
     this.setTooltip('start moving forward')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
+  },
+  onchange: function (event) {
+    // TODO: check if it's in an on-block or if top-in is bot.
   }
 }
 

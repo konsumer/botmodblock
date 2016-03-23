@@ -1,4 +1,4 @@
-Blockly.Blocks['logic_wait'] = {
+Blockly.Blocks['time_wait'] = {
   init: function () {
     this.appendValueInput('WAIT')
       .setCheck('Number')
@@ -14,7 +14,7 @@ Blockly.Blocks['logic_wait'] = {
   }
 }
 
-Blockly.JavaScript['logic_wait'] = function (block) {
+Blockly.JavaScript['time_wait'] = function (block) {
   var value_wait = Blockly.JavaScript.valueToCode(block, 'WAIT', Blockly.JavaScript.ORDER_ATOMIC) | 0
   var dropdown_unit = block.getFieldValue('UNIT')
   var statements_do = Blockly.JavaScript.statementToCode(block, 'DO')

@@ -72,15 +72,15 @@ Blockly.Blocks['bot_on_handle'] = {
     this.setColour(260)
     this.setTooltip('Handle an event that your bot saw.')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#events')
+  },
+  onchange: function (event) {
+    // TODO: add args to variables so you can use them in statement
   }
 }
 
 Blockly.JavaScript['bot_on_handle'] = function (block) {
-  console.log(block)
-
   var dropdown_event = block.getFieldValue('EVENT')
   var statements_callback = Blockly.JavaScript.statementToCode(block, 'CALLBACK')
-  // TODO: add args to variables so you can use them, require connection to a bot
   return `.on('${dropdown_event}', function(${eventTypes[dropdown_event]}){
   var bot = this
   ${statements_callback}

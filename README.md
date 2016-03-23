@@ -25,3 +25,7 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 -  [ ] add glob to browserify so I don;t need to manually require blocks
 -  [ ] use browserify-middleware
 -  [ ] add run support
+-  [ ] make "time" blocks
+-  [ ] turtle-like commands for bot
+-  [ ] use `utils.val()` for every val usage
+-  [ ] write validation functions in `util` for in-block & top-is-bot

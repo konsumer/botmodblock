@@ -9,10 +9,11 @@ Blockly.Blocks['bot_quit'] = {
     this.setColour(260)
     this.setTooltip('Gracefully disconnect from the server with the given reason.')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botquitreason')
+  },
+  onchange: function (event) {
+    // TODO: check if it's in an on-block or if top-in is bot.
   }
 }
-
-// TODO: check if it's in an on-block or if top-in is bot.
 
 Blockly.JavaScript['bot_quit'] = function (block) {
   var value_reason = Blockly.JavaScript.valueToCode(block, 'REASON', Blockly.JavaScript.ORDER_ATOMIC)

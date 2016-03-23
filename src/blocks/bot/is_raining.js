@@ -8,8 +8,10 @@ Blockly.Blocks['bot_is_raining'] = {
     this.setColour(260)
     this.setTooltip('Is it raining in the world?')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botisraining')
+  },
+  onchange: function (event) {
+    // TODO: check if it's in an on-block
   }
-}
 
 // TODO: validate this is in a bot flow
 

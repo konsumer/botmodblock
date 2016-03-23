@@ -6,6 +6,9 @@ Blockly.Blocks['bot_end'] = {
     this.setColour(260)
     this.setTooltip('End the connection with the server.')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botend')
+  },
+  onchange: function (event) {
+    // TODO: check if it's in an on-block or if top-in is bot.
   }
 }
 

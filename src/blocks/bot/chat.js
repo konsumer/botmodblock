@@ -1,7 +1,5 @@
 // /blockfactory/#bot_chat
 
-// TODO: check if it's in an on-block or if top-in is bot.
-
 Blockly.Blocks['bot_chat'] = {
   init: function () {
     this.appendValueInput('MESSAGE')
@@ -12,6 +10,9 @@ Blockly.Blocks['bot_chat'] = {
     this.setColour(260)
     this.setTooltip('Sends a publicly broadcast chat message. Breaks up big messages into multiple chat messages as necessary.')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botchatmessage')
+  },
+  onchange: function (event) {
+    // TODO: check if it's in an on-block or if top-in is bot.
   }
 }
 
