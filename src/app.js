@@ -59,6 +59,7 @@ require('./blocks/common')
 require('./blocks/bot')
 require('./blocks/mod')
 require('./blocks/color')
+require('./blocks/wait')
 
 // TODO: this sucks and only half-works.
 function onresize (e) {
