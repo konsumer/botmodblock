@@ -19,6 +19,6 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 #### todo
 
 -  [ ] complete support for [mineflayer](https://github.com/PrismarineJS/mineflayer)
--  [ ] get ideas from [here](http://inspiredtoeducate.net/modmaker/)
+-  [ ] get ideas from [modmaker](http://inspiredtoeducate.net/modmaker/)
 -  [ ] use these: mineflayer-blockfinder, mineflayer-navigate, mineflayer-scaffold
 -  [ ] look at [App Inventor](http://ai2.appinventor.mit.edu/) for inspiration (especially with procedures) ([source](https://github.com/mit-cml/appinventor-sources))
