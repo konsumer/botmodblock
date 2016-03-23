@@ -14,7 +14,7 @@ Blockly.Blocks['bot_is_raining'] = {
 // TODO: validate this is in a bot/on flow
 
 Blockly.JavaScript['bot_is_raining'] = function (block) {
-  return ['bot.isRaining()', Blockly.JavaScript.ORDER_NONE]
+  return ['bot.isRaining', Blockly.JavaScript.ORDER_NONE]
 }
 
 Blockly.addToolboxItem('bot_is_raining', document.getElementById('tbMCclient'))

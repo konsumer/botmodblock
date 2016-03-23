@@ -14,7 +14,7 @@ Blockly.Blocks['bot_health'] = {
 // TODO: validate this is in a bot/on flow
 
 Blockly.JavaScript['bot_health'] = function (block) {
-  return ['bot.health()', Blockly.JavaScript.ORDER_NONE]
+  return ['bot.health', Blockly.JavaScript.ORDER_NONE]
 }
 
 Blockly.addToolboxItem('bot_health', document.getElementById('tbMCclient'))
