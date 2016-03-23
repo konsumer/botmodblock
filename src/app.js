@@ -58,7 +58,7 @@ if ('BlocklyStorage' in window && window.location.hash.length > 1) {
 require('./blocks/common')
 require('./blocks/bot')
 require('./blocks/mod')
-require('./blocks/app_inventor')
+require('./blocks/color')
 
 // TODO: this sucks and only half-works.
 function onresize (e) {
