@@ -13,8 +13,6 @@ Blockly.Blocks['bot_chat'] = {
   }
 }
 
-// TODO: validate this is in a bot/on flow 
-
 Blockly.JavaScript['bot_chat'] = function (block) {
   var value_message = Blockly.JavaScript.valueToCode(block, 'MESSAGE', Blockly.JavaScript.ORDER_ATOMIC)
   return `bot.chat(${value_message})`

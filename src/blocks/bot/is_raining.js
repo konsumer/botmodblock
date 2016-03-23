@@ -6,8 +6,8 @@ Blockly.Blocks['bot_is_raining'] = {
       .appendField("it's raining")
     this.setOutput(true, 'Boolean')
     this.setColour(260)
-    this.setTooltip('')
-    this.setHelpUrl('http://www.example.com/')
+    this.setTooltip('Is it raining in the world?')
+    this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botisraining')
   }
 }
 
