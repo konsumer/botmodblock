@@ -51,8 +51,8 @@ Blockly.Blocks['factory_base'] = {
     this.appendDummyInput()
       .appendField(dropdown, 'CONNECTIONS')
     this.appendValueInput('COLOUR')
-      .setCheck('Colour')
-      .appendField('colour')
+      .setCheck('Color')
+      .appendField('color')
     /*
     this.appendValueInput('TOOLTIP')
         .setCheck('String')
@@ -408,13 +408,13 @@ Blockly.Blocks['field_colour'] = {
   init: function () {
     this.setColour(160)
     this.appendDummyInput()
-      .appendField('colour')
+      .appendField('color')
       .appendField(new Blockly.FieldColour('#ff0000'), 'COLOUR')
       .appendField(',')
       .appendField(new Blockly.FieldTextInput('NAME'), 'FIELDNAME')
     this.setPreviousStatement(true, 'Field')
     this.setNextStatement(true, 'Field')
-    this.setTooltip('Colour input field.')
+    this.setTooltip('Color input field.')
     this.setHelpUrl('https://www.youtube.com/watch?v=s2_xaEvcVI0#t=495')
   },
   onchange: function () {
@@ -690,8 +690,8 @@ Blockly.Blocks['colour_hue'] = {
     this.appendDummyInput()
       .appendField('hue:')
       .appendField(new Blockly.FieldAngle('0', this.validator), 'HUE')
-    this.setOutput(true, 'Colour')
-    this.setTooltip('Paint the block with this colour.')
+    this.setOutput(true, 'Color')
+    this.setTooltip('Paint the block with this color.')
     this.setHelpUrl('https://www.youtube.com/watch?v=s2_xaEvcVI0#t=55')
   },
   validator: function (text) {
