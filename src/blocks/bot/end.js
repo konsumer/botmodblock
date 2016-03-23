@@ -9,6 +9,8 @@ Blockly.Blocks['bot_end'] = {
   }
 }
 
+// TODO: check if it's in an on-block or if top-in is bot.
+
 Blockly.JavaScript['bot_end'] = function (block) {
   return `bot.end()
 `

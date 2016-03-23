@@ -12,6 +12,8 @@ Blockly.Blocks['bot_quit'] = {
   }
 }
 
+// TODO: check if it's in an on-block or if top-in is bot.
+
 Blockly.JavaScript['bot_quit'] = function (block) {
   var value_reason = Blockly.JavaScript.valueToCode(block, 'REASON', Blockly.JavaScript.ORDER_ATOMIC)
   var code = `bot.quit(${value_reason})

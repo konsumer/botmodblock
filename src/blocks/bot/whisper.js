@@ -16,8 +16,24 @@ Blockly.Blocks['bot_whisper'] = {
     this.setColour(260)
     this.setTooltip('Say something only to a specific user')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botwhisperusername-message')
+  },
+  onchange: function (event) {
+    var err
+    if (!this.getInput('USERNAME').connection.targetBlock()) {
+      this.setWarningText('Must have a user')
+      err = true
+    }
+    if (!this.getInput('MESSAGE').connection.targetBlock()) {
+      this.setWarningText('Must have a message')
+      err = true
+    }
+    if (!err) {
+      this.setWarningText(null)
+    }
   }
 }
+
+// TODO: check if it's in an on-block or if top-in is bot.
 
 Blockly.JavaScript['bot_whisper'] = function (block) {
   var value_username = Blockly.JavaScript.valueToCode(block, 'USERNAME', Blockly.JavaScript.ORDER_ATOMIC)

@@ -8,14 +8,14 @@ Blockly.Blocks['logic_wait'] = {
     this.appendStatementInput('DO')
     this.setPreviousStatement(true, 'bot')
     this.setNextStatement(true, 'bot')
-    this.setColour(260)
+    this.setColour(210)
     this.setHelpUrl('https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout')
     this.setTooltip('wait some time before doing something')
   }
 }
 
 Blockly.JavaScript['logic_wait'] = function (block) {
-  var value_wait = Blockly.JavaScript.valueToCode(block, 'WAIT', Blockly.JavaScript.ORDER_ATOMIC)
+  var value_wait = Blockly.JavaScript.valueToCode(block, 'WAIT', Blockly.JavaScript.ORDER_ATOMIC) | 0
   var dropdown_unit = block.getFieldValue('UNIT')
   var statements_do = Blockly.JavaScript.statementToCode(block, 'DO')
   console.log(dropdown_unit)

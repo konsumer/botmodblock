@@ -11,7 +11,7 @@ Blockly.Blocks['bot_health'] = {
   }
 }
 
-// TODO: validate this is in a bot/on flow
+// TODO: validate this is in a bot flow
 
 Blockly.JavaScript['bot_health'] = function (block) {
   return ['bot.health', Blockly.JavaScript.ORDER_NONE]

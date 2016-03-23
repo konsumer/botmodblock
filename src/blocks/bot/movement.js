@@ -1,9 +1,11 @@
+// TODO: check if it's in an on-block or if top-in is bot.
+
 Blockly.Blocks['bot_forward_on'] = {
   init: function () {
     this.appendDummyInput()
       .appendField('start moving forward')
-    this.setPreviousStatement(true, 'bot')
-    this.setNextStatement(true, 'bot')
+    this.setPreviousStatement(true)
+    this.setNextStatement(true)
     this.setColour(260)
     this.setTooltip('start moving forward')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
@@ -18,8 +20,8 @@ Blockly.Blocks['bot_back_on'] = {
   init: function () {
     this.appendDummyInput()
       .appendField('start moving back')
-    this.setPreviousStatement(true, 'bot')
-    this.setNextStatement(true, 'bot')
+    this.setPreviousStatement(true)
+    this.setNextStatement(true)
     this.setColour(260)
     this.setTooltip('start moving back')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
@@ -34,8 +36,8 @@ Blockly.Blocks['bot_left_on'] = {
   init: function () {
     this.appendDummyInput()
       .appendField('start moving left')
-    this.setPreviousStatement(true, 'bot')
-    this.setNextStatement(true, 'bot')
+    this.setPreviousStatement(true)
+    this.setNextStatement(true)
     this.setColour(260)
     this.setTooltip('start moving left')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
@@ -50,8 +52,8 @@ Blockly.Blocks['bot_right_on'] = {
   init: function () {
     this.appendDummyInput()
       .appendField('start moving left')
-    this.setPreviousStatement(true, 'bot')
-    this.setNextStatement(true, 'bot')
+    this.setPreviousStatement(true)
+    this.setNextStatement(true)
     this.setColour(260)
     this.setTooltip('start moving left')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
@@ -66,8 +68,8 @@ Blockly.Blocks['bot_forward_off'] = {
   init: function () {
     this.appendDummyInput()
       .appendField('stop moving forward')
-    this.setPreviousStatement(true, 'bot')
-    this.setNextStatement(true, 'bot')
+    this.setPreviousStatement(true)
+    this.setNextStatement(true)
     this.setColour(260)
     this.setTooltip('stop moving forward')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
@@ -82,8 +84,8 @@ Blockly.Blocks['bot_back_off'] = {
   init: function () {
     this.appendDummyInput()
       .appendField('stop moving back')
-    this.setPreviousStatement(true, 'bot')
-    this.setNextStatement(true, 'bot')
+    this.setPreviousStatement(true)
+    this.setNextStatement(true)
     this.setColour(260)
     this.setTooltip('stop moving back')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
@@ -98,8 +100,8 @@ Blockly.Blocks['bot_left_off'] = {
   init: function () {
     this.appendDummyInput()
       .appendField('stop moving left')
-    this.setPreviousStatement(true, 'bot')
-    this.setNextStatement(true, 'bot')
+    this.setPreviousStatement(true)
+    this.setNextStatement(true)
     this.setColour(260)
     this.setTooltip('stop moving left')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
@@ -114,8 +116,8 @@ Blockly.Blocks['bot_right_off'] = {
   init: function () {
     this.appendDummyInput()
       .appendField('stop moving left')
-    this.setPreviousStatement(true, 'bot')
-    this.setNextStatement(true, 'bot')
+    this.setPreviousStatement(true)
+    this.setNextStatement(true)
     this.setColour(260)
     this.setTooltip('stop moving left')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
