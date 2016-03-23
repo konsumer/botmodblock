@@ -22,3 +22,6 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 -  [ ] get ideas from [modmaker](http://inspiredtoeducate.net/modmaker/)
 -  [ ] use these: mineflayer-blockfinder, mineflayer-navigate, mineflayer-scaffold
 -  [ ] look at [App Inventor](http://ai2.appinventor.mit.edu/) for inspiration (especially with procedures) ([source](https://github.com/mit-cml/appinventor-sources))
+-  [ ] add glob to browserify so I don;t need to manually require blocks
+-  [ ] use browserify-middleware
+-  [ ] add run support
