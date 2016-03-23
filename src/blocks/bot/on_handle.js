@@ -80,7 +80,7 @@ Blockly.JavaScript['bot_on_handle'] = function (block) {
 
   var dropdown_event = block.getFieldValue('EVENT')
   var statements_callback = Blockly.JavaScript.statementToCode(block, 'CALLBACK')
-  // TODO: add args to variables so you can use them, use correct bot
+  // TODO: add args to variables so you can use them, require connection to a bot
   return `.on('${dropdown_event}', function(${eventTypes[dropdown_event]}){
   var bot = this
   ${statements_callback}
@@ -88,16 +88,5 @@ Blockly.JavaScript['bot_on_handle'] = function (block) {
 
 `
 }
-
-// Blockly.JavaScript['bot_on_handle'] = function (block) {
-//   console.log(block)
-//   var dropdown_event = block.getFieldValue('EVENT')
-//   var value_callback = Blockly.JavaScript.valueToCode(block, 'CALLBACK').replace('()', '')
-//   return `
-// .on('${dropdown_event}', function(${eventTypes[dropdown_event]}){
-//   ${value_callback}(${eventTypes[dropdown_event]})
-// })
-// `
-// }
 
 Blockly.addToolboxItem('bot_on_handle', document.getElementById('tbMCclient'))
