@@ -12,8 +12,7 @@ Blockly.Blocks['bot_is_raining'] = {
   onchange: function (event) {
     // TODO: check if it's in an on-block
   }
-
-// TODO: validate this is in a bot flow
+}
 
 Blockly.JavaScript['bot_is_raining'] = function (block) {
   return ['bot.isRaining', Blockly.JavaScript.ORDER_NONE]
