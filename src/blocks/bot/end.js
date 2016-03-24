@@ -19,4 +19,5 @@ Blockly.JavaScript['bot_end'] = function (block) {
 `
 }
 
-Blockly.addToolboxItem('bot_end', document.getElementById('tbMCclient'))
+// no need for end & quit
+// Blockly.addToolboxItem('bot_end', document.getElementById('tbMCclient'))
