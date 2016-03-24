@@ -12,6 +12,16 @@ Blockly.Blocks['bot_chat'] = {
     this.setColour(260)
     this.setTooltip('Sends a publicly broadcast chat message. Breaks up big messages into multiple chat messages as necessary.')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botchatmessage')
+  },
+  onchange: function (event) {
+    var err
+    if (!this.getInput('MESSAGE').connection.targetBlock()) {
+      this.setWarningText('Must have a message')
+      err = true
+    }
+    if (!err) {
+      this.setWarningText(null)
+    }
   }
 }
 
