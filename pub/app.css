@@ -189,7 +189,7 @@ button:hover:not(:disabled)>* {
 
 #overlayCloseButton {
   float:right;
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 .blocklyTreeRow {
