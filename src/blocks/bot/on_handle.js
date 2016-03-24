@@ -74,7 +74,7 @@ Blockly.Blocks['bot_on_handle'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#events')
   },
   onchange: function (event) {
-    // TODO: add args to variables so you can use them in statement
+    // top must be bot
   }
 }
 
