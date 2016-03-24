@@ -32,7 +32,6 @@ Blockly.Blocks['bot_connect_to_server'] = {
   }
 }
 
-// TODO: track bot count and make bots seperate. do bot1, bot2, etc
 Blockly.JavaScript['bot_connect_to_server'] = function (block) {
   return `require('mineflayer').createBot({
   host: ${val(block, 'hostname')},

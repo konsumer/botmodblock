@@ -18,6 +18,7 @@ Blockly.Blocks['bot_whisper'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botwhisperusername-message')
   },
   onchange: function (event) {
+    // TODO: check if it's in an on-block or if top-in is bot.
     var err
     if (!this.getInput('USERNAME').connection.targetBlock()) {
       this.setWarningText('Must have a user')
@@ -32,8 +33,6 @@ Blockly.Blocks['bot_whisper'] = {
     }
   }
 }
-
-// TODO: check if it's in an on-block or if top-in is bot.
 
 Blockly.JavaScript['bot_whisper'] = function (block) {
   var value_username = Blockly.JavaScript.valueToCode(block, 'USERNAME', Blockly.JavaScript.ORDER_ATOMIC)

@@ -1,7 +1,5 @@
 // /blockfactory/#bot_chat
 
-// TODO: check if it's in an on-block or if top-in is bot.
-
 Blockly.Blocks['bot_chat'] = {
   init: function () {
     this.appendValueInput('MESSAGE')

@@ -19,6 +19,15 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 #### todo
 
 -  [ ] complete support for [mineflayer](https://github.com/PrismarineJS/mineflayer)
--  [ ] get ideas from [modmaker](http://inspiredtoeducate.net/modmaker/)
 -  [ ] use these: mineflayer-blockfinder, mineflayer-navigate, mineflayer-scaffold
 -  [ ] look at [App Inventor](http://ai2.appinventor.mit.edu/) for inspiration (especially with procedures) ([source](https://github.com/mit-cml/appinventor-sources))
+-  [ ] get ideas from [modmaker](http://inspiredtoeducate.net/modmaker/)
+-  [ ] add glob to browserify so I don't need to manually require blocks
+-  [ ] use browserify-middleware with livereload
+-  [ ] add backend run support
+-  [ ] reference vars for "time" blocks, so they can be canceled
+-  [ ] callback arguments added to UI
+-  [ ] bot block added to their own toolbox category per-bot?
+-  [ ] turtle-like commands for bot
+-  [ ] use `utils.val()` for every val usage
+-  [ ] write validation functions in `util` for in-block & top-is-bot
