@@ -15,6 +15,9 @@ Blockly.Blocks['bot_toss'] = {
     this.setColour(260)
     this.setTooltip('toss an item')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#bottossitemtype-metadata-count-callback')
+  },
+  onchange: function (event) {
+    require('../utils').inBotBolock(this)
   }
 }
 

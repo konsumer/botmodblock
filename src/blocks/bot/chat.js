@@ -1,5 +1,7 @@
 // /blockfactory/#bot_chat
 
+var inBotBolock = require('../utils').inBotBolock
+
 Blockly.Blocks['bot_chat'] = {
   init: function () {
     this.appendValueInput('MESSAGE')
@@ -12,6 +14,7 @@ Blockly.Blocks['bot_chat'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botchatmessage')
   },
   onchange: function (event) {
+    inBotBolock(this)
     var err
     if (!this.getInput('MESSAGE').connection.targetBlock()) {
       this.setWarningText('Must have a message')
@@ -25,7 +28,8 @@ Blockly.Blocks['bot_chat'] = {
 
 Blockly.JavaScript['bot_chat'] = function (block) {
   var value_message = Blockly.JavaScript.valueToCode(block, 'MESSAGE', Blockly.JavaScript.ORDER_ATOMIC)
-  return `bot.chat(${value_message})`
+  return `bot.chat(${value_message})
+`
 }
 
 Blockly.addToolboxItem('bot_chat', document.getElementById('tbMCclient'))

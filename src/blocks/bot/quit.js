@@ -11,7 +11,7 @@ Blockly.Blocks['bot_quit'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botquitreason')
   },
   onchange: function (event) {
-    // TODO: check if it's in an on-block or if top-in is bot.
+    require('../utils').inBotBolock(this)
   }
 }
 

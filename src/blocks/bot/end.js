@@ -8,16 +8,13 @@ Blockly.Blocks['bot_end'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botend')
   },
   onchange: function (event) {
-    // TODO: check if it's in an on-block or if top-in is bot.
+    require('../utils').inBotBolock(this)
   }
 }
 
-// TODO: check if it's in an on-block or if top-in is bot.
-
 Blockly.JavaScript['bot_end'] = function (block) {
-  return `bot.end()
-`
+  return 'bot.end()\n'
 }
 
-// no need for end & quit
+// no need for end & quit both.
 // Blockly.addToolboxItem('bot_end', document.getElementById('tbMCclient'))

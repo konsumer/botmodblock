@@ -10,7 +10,7 @@ Blockly.Blocks['bot_is_raining'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botisraining')
   },
   onchange: function (event) {
-    // TODO: check if it's in an on-block
+    require('../utils').inBotBolock(this)
   }
 }
 

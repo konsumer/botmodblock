@@ -11,7 +11,7 @@ Blockly.Blocks['bot_forward_on'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
   },
   onchange: function (event) {
-    // TODO: check if it's in an on-block or if top-in is bot.
+    require('../utils').inBotBolock(this)
   }
 }
 
@@ -28,6 +28,9 @@ Blockly.Blocks['bot_back_on'] = {
     this.setColour(260)
     this.setTooltip('start moving back')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
+  },
+  onchange: function (event) {
+    require('../utils').inBotBolock(this)
   }
 }
 
@@ -44,6 +47,9 @@ Blockly.Blocks['bot_left_on'] = {
     this.setColour(260)
     this.setTooltip('start moving left')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
+  },
+  onchange: function (event) {
+    require('../utils').inBotBolock(this)
   }
 }
 
@@ -60,6 +66,9 @@ Blockly.Blocks['bot_right_on'] = {
     this.setColour(260)
     this.setTooltip('start moving left')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
+  },
+  onchange: function (event) {
+    require('../utils').inBotBolock(this)
   }
 }
 
@@ -76,6 +85,9 @@ Blockly.Blocks['bot_forward_off'] = {
     this.setColour(260)
     this.setTooltip('stop moving forward')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
+  },
+  onchange: function (event) {
+    require('../utils').inBotBolock(this)
   }
 }
 
@@ -92,6 +104,9 @@ Blockly.Blocks['bot_back_off'] = {
     this.setColour(260)
     this.setTooltip('stop moving back')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
+  },
+  onchange: function (event) {
+    require('../utils').inBotBolock(this)
   }
 }
 
@@ -108,6 +123,9 @@ Blockly.Blocks['bot_left_off'] = {
     this.setColour(260)
     this.setTooltip('stop moving left')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
+  },
+  onchange: function (event) {
+    require('../utils').inBotBolock(this)
   }
 }
 
@@ -124,6 +142,9 @@ Blockly.Blocks['bot_right_off'] = {
     this.setColour(260)
     this.setTooltip('stop moving left')
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
+  },
+  onchange: function (event) {
+    require('../utils').inBotBolock(this)
   }
 }
 

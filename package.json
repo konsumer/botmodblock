@@ -10,7 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "enchilada": "^0.13.0",
     "express": "^4.13.4",
     "express-static": "^1.0.3",
     "highlight.js": "^9.2.0",

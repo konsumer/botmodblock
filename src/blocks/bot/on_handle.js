@@ -74,15 +74,14 @@ Blockly.Blocks['bot_on_handle'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#events')
   },
   onchange: function (event) {
-    // top must be bot
+    require('../utils').inBotBolock(this)
   }
 }
 
 Blockly.JavaScript['bot_on_handle'] = function (block) {
   var dropdown_event = block.getFieldValue('EVENT')
   var statements_callback = Blockly.JavaScript.statementToCode(block, 'CALLBACK')
-  return `.on('${dropdown_event}', function(${eventTypes[dropdown_event]}){
-  var bot = this
+  return `bot.on('${dropdown_event}', function(${eventTypes[dropdown_event]}){
   ${statements_callback}
 })
 

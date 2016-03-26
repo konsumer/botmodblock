@@ -9,12 +9,14 @@ var overlayCloseButton = document.getElementById('overlayCloseButton')
 var overlayContent = document.getElementById('overlayContent')
 var linkButton = document.getElementById('linkButton')
 
-var workspace = window.Blockly.inject(blocklyDiv, {
+window.workspace = window.Blockly.inject(blocklyDiv, {
   toolbox: blocklyToolbox,
   trashcan: true,
   zoom: true,
   media: 'https://blockly-demo.appspot.com/static/media/'
 })
+
+// TODO: is there somehting builtin that does this?
 
 window.Blockly.addToolboxItem = function (type, parent) {
   parent = parent || blocklyToolbox
@@ -33,6 +35,11 @@ window.Blockly.addToolboxCategory = function (name, parent) {
   workspace.updateToolbox(document.getElementById('blocklyToolbox'))
   return category
 }
+
+require('./blocks/common')
+require('./blocks/bot')
+require('./blocks/mod')
+require('./blocks/nonmc')
 
 if ('BlocklyStorage' in window) {
   BlocklyStorage.HTTPREQUEST_ERROR =
@@ -54,11 +61,6 @@ if ('BlocklyStorage' in window) {
 if ('BlocklyStorage' in window && window.location.hash.length > 1) {
   BlocklyStorage.retrieveXml(window.location.hash.substring(1), workspace)
 }
-
-require('./blocks/common')
-require('./blocks/bot')
-require('./blocks/mod')
-require('./blocks/nonmc')
 
 // TODO: this sucks and only half-works.
 function onresize (e) {

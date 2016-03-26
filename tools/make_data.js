@@ -1,4 +1,4 @@
-// generate XML for data widgets. should use data module....
+// generate XML for data widgets.
 
 var mineflayer = require('mineflayer')
 var fs = require('fs')

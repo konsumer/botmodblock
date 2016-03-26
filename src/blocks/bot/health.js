@@ -10,14 +10,12 @@ Blockly.Blocks['bot_health'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#bothealth')
   },
   onchange: function (event) {
-    // TODO: check if it's in an on-block
+    require('../utils').inBotBolock(this)
   }
 }
 
-// TODO: validate this is in a bot flow
-
 Blockly.JavaScript['bot_health'] = function (block) {
-  return ['bot.health', Blockly.JavaScript.ORDER_NONE]
+  return 'bot.health'
 }
 
 Blockly.addToolboxItem('bot_health', document.getElementById('tbMCclient'))
