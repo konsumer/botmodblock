@@ -44,7 +44,6 @@ Blockly.JavaScript['bot_connect_to_server'] = function (block) {
   })
 
   ${statements_do}
-
 })()
 `
 }
