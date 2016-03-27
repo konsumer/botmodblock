@@ -33,6 +33,7 @@ Blockly.Blocks['bot_connect_to_server'] = {
   }
 }
 
+// DEP: mineflayer
 Blockly.JavaScript['bot_connect_to_server'] = function (block) {
   var statements_do = Blockly.JavaScript.statementToCode(block, 'DO')
   return `
@@ -47,4 +48,3 @@ ${statements_do}
 `
 }
 
-Blockly.addToolboxItem('bot_connect_to_server', document.getElementById('tbMCclient'))

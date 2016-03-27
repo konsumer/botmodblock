@@ -183,14 +183,3 @@ Blockly.Blocks['bot_right_off'] = {
 Blockly.JavaScript['bot_right_off'] = function (block) {
   return "bot.setControlState('right', true)\n"
 }
-
-// TODO: these are obtuse. Use mineflayer-navigate?
-
-// Blockly.addToolboxItem('bot_forward_on', document.getElementById('tbMCclient'))
-// Blockly.addToolboxItem('bot_forward_off', document.getElementById('tbMCclient'))
-// Blockly.addToolboxItem('bot_back_on', document.getElementById('tbMCclient'))
-// Blockly.addToolboxItem('bot_back_off', document.getElementById('tbMCclient'))
-// Blockly.addToolboxItem('bot_right_on', document.getElementById('tbMCclient'))
-// Blockly.addToolboxItem('bot_right_off', document.getElementById('tbMCclient'))
-// Blockly.addToolboxItem('bot_left_on', document.getElementById('tbMCclient'))
-// Blockly.addToolboxItem('bot_left_off', document.getElementById('tbMCclient'))

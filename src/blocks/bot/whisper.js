@@ -39,5 +39,3 @@ Blockly.JavaScript['bot_whisper'] = function (block) {
 `
   return code
 }
-
-Blockly.addToolboxItem('bot_whisper', document.getElementById('tbMCclient'))

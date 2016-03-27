@@ -25,5 +25,3 @@ Blockly.JavaScript['bot_quit'] = function (block) {
 `
   return code
 }
-
-Blockly.addToolboxItem('bot_quit', document.getElementById('tbMCclient'))

@@ -1,13 +1,16 @@
 var fs = require('fs')
 var path = require('path')
+var SandCastle = require('sandcastle').SandCastle
 var express = require('express')
 var randomWords = require('random-words')
-var mineflayer = require('mineflayer')
 var expressStatic = require('express-static')
 var enchilada = require('enchilada')
 var bodyParser = require('body-parser')
-var app = express()
+
 var port = process.env.PORT || 4000
+
+var app = express()
+var sandcastle = new SandCastle({ timeout: 6000, api: './run_api.js'})
 
 function logErrors (err, req, res, next) {
   console.error(err.stack)
@@ -34,8 +37,6 @@ app.use(logErrors)
 app.use(clientErrorHandler)
 app.use(errorHandler)
 
-// TODO: actually run code
-
 // emulate cloud-storage feature
 app.post('/storage', function (req, res, next) {
   if (req.body.key) {
@@ -50,6 +51,24 @@ app.post('/storage', function (req, res, next) {
       res.send(key)
     })
   }
+})
+
+app.post('/run', function (req, res, next) {
+  sandcastle.kill()
+  var script = sandcastle.createScript('exports.main=function(){\n' + req.body.code + '\n}')
+  script.on('exit', function(err, output) {
+    if (err){
+      res.status(500)
+      return res.send(err)
+    }
+    res.send(output)
+    sandcastle.kill()
+  })
+  script.on('timeout', function() {
+    res.send(true)
+    sandcastle.kill()
+  })
+  script.run()
 })
 
 app.use(enchilada(path.join(__dirname, 'src')))

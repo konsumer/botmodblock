@@ -21,5 +21,3 @@ Blockly.Blocks['bot_is_raining'] = {
 Blockly.JavaScript['bot_is_raining'] = function (block) {
   return ['bot.isRaining', Blockly.JavaScript.ORDER_NONE]
 }
-
-Blockly.addToolboxItem('bot_is_raining', document.getElementById('tbMCclient'))

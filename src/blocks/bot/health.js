@@ -21,5 +21,3 @@ Blockly.Blocks['bot_health'] = {
 Blockly.JavaScript['bot_health'] = function (block) {
   return 'bot.health'
 }
-
-Blockly.addToolboxItem('bot_health', document.getElementById('tbMCclient'))

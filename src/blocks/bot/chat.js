@@ -28,5 +28,3 @@ Blockly.JavaScript['bot_chat'] = function (block) {
   return `bot.chat(${value_message})
 `
 }
-
-Blockly.addToolboxItem('bot_chat', document.getElementById('tbMCclient'))

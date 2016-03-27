@@ -1,6 +1,11 @@
 var hl = require('highlight.js').highlight
 var beautify = require('js-beautify').js_beautify
 
+require('./blocks/common')
+require('./blocks/bot')
+require('./blocks/mod')
+require('./blocks/nonmc')
+
 var blocklyDiv = document.getElementById('blocklyDiv')
 var blocklyArea = document.getElementById('blocklyArea')
 var blocklyToolbox = document.getElementById('blocklyToolbox')
@@ -12,34 +17,18 @@ var linkButton = document.getElementById('linkButton')
 window.workspace = window.Blockly.inject(blocklyDiv, {
   toolbox: blocklyToolbox,
   trashcan: true,
-  zoom: true,
+  zoom:{
+    controls: true,
+    wheel: true,
+    startScale: 1.0,
+    maxScale: 3,
+    minScale: 0.3,
+    scaleSpeed: 1.2
+  },
   media: 'https://blockly-demo.appspot.com/static/media/'
 })
 
-// TODO: is there somehting builtin that does this?
 
-window.Blockly.addToolboxItem = function (type, parent) {
-  parent = parent || blocklyToolbox
-  var block = document.createElement('block')
-  block.setAttribute('type', type)
-  parent.appendChild(block)
-  workspace.updateToolbox(document.getElementById('blocklyToolbox'))
-  return block
-}
-
-window.Blockly.addToolboxCategory = function (name, parent) {
-  parent = parent || blocklyToolbox
-  var category = document.createElement('category')
-  category.setAttribute('name', name)
-  parent.appendChild(category)
-  workspace.updateToolbox(document.getElementById('blocklyToolbox'))
-  return category
-}
-
-require('./blocks/common')
-require('./blocks/bot')
-require('./blocks/mod')
-require('./blocks/nonmc')
 
 if ('BlocklyStorage' in window) {
   BlocklyStorage.HTTPREQUEST_ERROR =

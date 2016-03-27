@@ -31,5 +31,3 @@ Blockly.JavaScript['bot_toss'] = function (block) {
   return `bot.toss(${value_item}, null, ${value_count})
 `
 }
-
-Blockly.addToolboxItem('bot_toss', document.getElementById('tbMCclient'))

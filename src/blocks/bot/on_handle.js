@@ -91,5 +91,3 @@ Blockly.JavaScript['bot_on_handle'] = function (block) {
 
 `
 }
-
-Blockly.addToolboxItem('bot_on_handle', document.getElementById('tbMCclient'))

@@ -20,7 +20,6 @@ Blockly.Blocks['data_block'] = {
 }
 
 Blockly.JavaScript['data_block'] = generic_info
-Blockly.addToolboxItem('data_block', document.getElementById('tbMCcommon'))
 
 Blockly.Blocks['data_item'] = {
   init: function () {
@@ -34,7 +33,6 @@ Blockly.Blocks['data_item'] = {
 }
 
 Blockly.JavaScript['data_item'] = generic_info
-Blockly.addToolboxItem('data_item', document.getElementById('tbMCcommon'))
 
 Blockly.Blocks['data_instrument'] = {
   init: function () {
@@ -48,4 +46,3 @@ Blockly.Blocks['data_instrument'] = {
 }
 
 Blockly.JavaScript['data_instrument'] = generic_info
-Blockly.addToolboxItem('data_instrument', document.getElementById('tbMCcommon'))
