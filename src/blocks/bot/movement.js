@@ -11,7 +11,11 @@ Blockly.Blocks['bot_forward_on'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
   },
   onchange: function (event) {
-    require('../utils').inBotBolock(this)
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
+    this.setWarningText(err)
   }
 }
 
@@ -30,7 +34,11 @@ Blockly.Blocks['bot_back_on'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
   },
   onchange: function (event) {
-    require('../utils').inBotBolock(this)
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
+    this.setWarningText(err)
   }
 }
 
@@ -49,7 +57,11 @@ Blockly.Blocks['bot_left_on'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
   },
   onchange: function (event) {
-    require('../utils').inBotBolock(this)
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
+    this.setWarningText(err)
   }
 }
 
@@ -68,7 +80,11 @@ Blockly.Blocks['bot_right_on'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
   },
   onchange: function (event) {
-    require('../utils').inBotBolock(this)
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
+    this.setWarningText(err)
   }
 }
 
@@ -87,7 +103,11 @@ Blockly.Blocks['bot_forward_off'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
   },
   onchange: function (event) {
-    require('../utils').inBotBolock(this)
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
+    this.setWarningText(err)
   }
 }
 
@@ -106,7 +126,11 @@ Blockly.Blocks['bot_back_off'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
   },
   onchange: function (event) {
-    require('../utils').inBotBolock(this)
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
+    this.setWarningText(err)
   }
 }
 
@@ -125,7 +149,11 @@ Blockly.Blocks['bot_left_off'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
   },
   onchange: function (event) {
-    require('../utils').inBotBolock(this)
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
+    this.setWarningText(err)
   }
 }
 
@@ -144,7 +172,11 @@ Blockly.Blocks['bot_right_off'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botsetcontrolstatecontrol-state')
   },
   onchange: function (event) {
-    require('../utils').inBotBolock(this)
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
+    this.setWarningText(err)
   }
 }
 

@@ -18,19 +18,17 @@ Blockly.Blocks['bot_whisper'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botwhisperusername-message')
   },
   onchange: function (event) {
-    // TODO: check if it's in an on-block or if top-in is bot.
-    var err
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
     if (!this.getInput('USERNAME').connection.targetBlock()) {
-      this.setWarningText('Must have a user')
-      err = true
+      err = 'Must have a user'
     }
     if (!this.getInput('MESSAGE').connection.targetBlock()) {
-      this.setWarningText('Must have a message')
-      err = true
+      err = 'Must have a message'
     }
-    if (!err) {
-      this.setWarningText(null)
-    }
+    this.setWarningText(err)
   }
 }
 

@@ -74,7 +74,11 @@ Blockly.Blocks['bot_on_handle'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#events')
   },
   onchange: function (event) {
-    require('../utils').inBotBolock(this)
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
+    this.setWarningText(err)
   }
 }
 

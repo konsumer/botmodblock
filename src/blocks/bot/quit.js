@@ -11,7 +11,11 @@ Blockly.Blocks['bot_quit'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botquitreason')
   },
   onchange: function (event) {
-    require('../utils').inBotBolock(this)
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
+    this.setWarningText(err)
   }
 }
 

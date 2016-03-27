@@ -14,9 +14,5 @@ module.exports.inBotBolock = function (testblock) {
     }
     block = block.getSurroundParent()
   } while (block)
-  if (legal) {
-    testblock.setWarningText(null)
-  } else {
-    testblock.setWarningText('This block must be inside a minecraft bot block.')
-  }
+  return legal
 }

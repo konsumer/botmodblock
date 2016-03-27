@@ -1,7 +1,5 @@
 // /blockfactory/#bot_chat
 
-var inBotBolock = require('../utils').inBotBolock
-
 Blockly.Blocks['bot_chat'] = {
   init: function () {
     this.appendValueInput('MESSAGE')
@@ -14,15 +12,14 @@ Blockly.Blocks['bot_chat'] = {
     this.setHelpUrl('https://github.com/PrismarineJS/mineflayer/blob/master/doc/api.md#botchatmessage')
   },
   onchange: function (event) {
-    inBotBolock(this)
-    var err
+    var err = null
+    if (!require('../utils').inBotBolock(this)) {
+      err = 'This block must be inside a minecraft bot block.'
+    }
     if (!this.getInput('MESSAGE').connection.targetBlock()) {
-      this.setWarningText('Must have a message')
-      err = true
+      err = 'Must have a message'
     }
-    if (!err) {
-      this.setWarningText(null)
-    }
+    this.setWarningText(err)
   }
 }
 
