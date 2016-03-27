@@ -35,16 +35,15 @@ Blockly.Blocks['bot_connect_to_server'] = {
 
 Blockly.JavaScript['bot_connect_to_server'] = function (block) {
   var statements_do = Blockly.JavaScript.statementToCode(block, 'DO')
-  return `(function(){
-  var bot = require('mineflayer').createBot({
-    host: ${val(block, 'hostname')},
-    port: ${val(block, 'port')},
-    username: ${val(block, 'username')},
-    password: ${val(block, 'password')}
-  })
+  return `
+var bot = mineflayer.createBot({
+  host: ${val(block, 'hostname')},
+  port: ${val(block, 'port')},
+  username: ${val(block, 'username')},
+  password: ${val(block, 'password')}
+})
 
-  ${statements_do}
-})()
+${statements_do}
 `
 }
 
