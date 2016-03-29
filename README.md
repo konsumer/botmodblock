@@ -6,7 +6,7 @@ Learn Computer Science through Minecraft.
 
 This is a framework for interacting with minecraft, on the server & client side.  You can make bots that act like a player, or change how the server works. You can use [blockly](https://developers.google.com/blockly/) or javascript for both.
 
-![screenshot](pub/screenshot.png)
+![screenshot](screenshot.png)
 
 ## setup
 
