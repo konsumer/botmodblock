@@ -13,28 +13,24 @@ var template = [
       {
         label: 'Run',
         accelerator: 'CmdOrCtrl+R',
-        role: 'run',
         click: function(item, focusedWindow) {
         }
       },
       {
         label: 'Save',
         accelerator: 'CmdOrCtrl+S',
-        role: 'save',
         click: function(item, focusedWindow) {
         }
       },
       {
         label: 'Save As',
         accelerator: 'Shift+CmdOrCtrl+S',
-        role: 'saveas',
         click: function(item, focusedWindow) {
         }
       },
       {
         label: 'Open',
         accelerator: 'CmdOrCtrl+O',
-        role: 'open',
         click: function(item, focusedWindow) {
         }
       }
@@ -84,7 +80,6 @@ var template = [
       {
         label: 'Code',
         accelerator: 'Shift+CmdOrCtrl+C',
-        role: 'code',
         click: function(item, focusedWindow) {
         }
       },
