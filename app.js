@@ -56,21 +56,23 @@ var template = [
         accelerator: 'CmdOrCtrl+R',
         click: function (item, focusedWindow) {
           const code = Blockly.JavaScript.workspaceToCode(window.workspace)
-          const script = sandcastle.createScript(code)
+          const script = sandcastle.createScript('exports.main = function() {\n' + code + '\n}')
 
           script.on('exit', (err, output) => {
             if (err) {
               return console.error(err)
             }
-            console.log(output)
+            sandcastle.kill()
           })
 
           script.on('timeout', () => {
             console.error('timed out.')
+            sandcastle.kill()
           })
 
           script.on('error', (err) => {
             console.error(err)
+            sandcastle.kill()
           })
 
           script.run()
