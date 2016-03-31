@@ -5,10 +5,13 @@ const hl = require('highlight.js').highlight
 const beautify = require('js-beautify').js_beautify
 const dialog = electron.remote.require('dialog')
 const fs = require('fs')
-const SandCastle = require('sandcastle').SandCastle
-const sandcastle = new SandCastle({
-  timeout: 10000,
-  api: './run_api.js'
+
+const VM = require('vm2').VM
+var vm = new VM({
+  timeout: 1000,
+  sandbox: {
+    mineflayer: require('mineflayer')
+  }
 })
 
 require('./blocks/common')
@@ -56,26 +59,7 @@ var template = [
         accelerator: 'CmdOrCtrl+R',
         click: function (item, focusedWindow) {
           const code = Blockly.JavaScript.workspaceToCode(window.workspace)
-          const script = sandcastle.createScript('exports.main = function() {\n' + code + '\n}')
-
-          script.on('exit', (err, output) => {
-            if (err) {
-              return console.error(err)
-            }
-            sandcastle.kill()
-          })
-
-          script.on('timeout', () => {
-            console.error('timed out.')
-            sandcastle.kill()
-          })
-
-          script.on('error', (err) => {
-            console.error(err)
-            sandcastle.kill()
-          })
-
-          script.run()
+          vm.run(code)
         }
       }
     ]
