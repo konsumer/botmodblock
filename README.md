@@ -25,6 +25,7 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 #### todo
 -  [X] get it running as standalone app in electron
 -  [ ] as a demo implement [helperbot](https://www.npmjs.com/package/helperbot) in blocks
+-  [ ] as a demo imlement [rbot](https://github.com/rom1504/rbot) in blocks
 -  [ ] complete support for [mineflayer](https://github.com/PrismarineJS/mineflayer)
 -  [ ] use these: mineflayer-blockfinder, mineflayer-navigate, mineflayer-scaffold
 -  [ ] look at [App Inventor](http://ai2.appinventor.mit.edu/) for inspiration (especially with procedures) ([source](https://github.com/mit-cml/appinventor-sources))
