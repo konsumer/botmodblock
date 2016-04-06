@@ -4,8 +4,8 @@
   "description": "Learn Computer Science through Minecraft",
   "scripts": {
     "start": "electron main.js",
-    "build": "electron-packager . --all --overwrite --ignore=screenshot.png|README.md|.gitignore",
-    "zip": "for i in botmodblock-*; do cd $i && zip -r -9 ~/Desktop/$i.zip . && cd .. && rm -rf $i ;done"
+    "build": "electron-packager . --all --overwrite --ignore='screenshot.png|README.md|.gitignore'",
+    "zip": "for i in botmodblock-*; do cd $i && zip -r -9 ~/Desktop/$i.zip . ; cd .. ;done"
   },
   "main": "main.js",
   "author": "David Konsumer <konsumer@jetboystudio.com>",
