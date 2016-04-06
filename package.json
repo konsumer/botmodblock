@@ -1,6 +1,6 @@
 {
   "name": "botmodblock",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Learn Computer Science through Minecraft",
   "scripts": {
     "start": "electron main.js",
