@@ -38,5 +38,6 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 -  [ ] add blockfactory back so I can open/save source for blocks
 -  [ ] improve run error-handling & timeout
 -  [ ] seperate build into sub-project & use prune option for electron-packager
+-  [ ] use electron-packager ignore to get node_modules down to the bare minimum
 -  [ ] figure out branding
 -  [ ] auto-update code window
