@@ -6,6 +6,7 @@
     "start": "electron main.js",
     "build": "electron-packager . --all"
   },
+  "main": "main.js",
   "author": "David Konsumer <konsumer@jetboystudio.com>",
   "license": "MIT",
   "dependencies": {
