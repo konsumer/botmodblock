@@ -4,7 +4,7 @@
   "description": "Learn Computer Science through Minecraft",
   "scripts": {
     "start": "electron main.js",
-    "build": "electron-packager . --all"
+    "build": "electron-packager . --all --overwrite"
   },
   "main": "main.js",
   "author": "David Konsumer <konsumer@jetboystudio.com>",

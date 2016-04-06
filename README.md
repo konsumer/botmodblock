@@ -39,3 +39,4 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 -  [ ] improve run error-handling & timeout
 -  [ ] seperate build into sub-project & use prune option for electron-packager
 -  [ ] figure out branding
+-  [ ] auto-update code window
