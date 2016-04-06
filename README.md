@@ -8,11 +8,15 @@ This is a framework for interacting with minecraft, on the server & client side.
 
 ![screenshot](screenshot.png)
 
-## setup
+## usage
+
+Right now, it only has the beginnings of bot support. You can open/save XML files that represent the block diagrams, and you can view/run generated code. Once I finish the bot support, I'll add some cool examples to make it easier to get started.
+
+## development
 
 Run `npm install` to get dependencies, and `npm start` to start the local server. `npm run build` wil build the releases.
 
-### server
+### minecraft server
 
 You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run server-side code. [Here](https://github.com/walterhiggins/ScriptCraft/blob/master/README.md) is a great guide for getting started with that. Defintely go the canarymod route, as this code has only been tested with that (not bukkit.) Use version 1.8 so bots will work.
 
@@ -33,3 +37,5 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 -  [X] write validation functions in `util` for in-block & top-is-bot
 -  [ ] add blockfactory back so I can open/save source for blocks
 -  [ ] improve run error-handling & timeout
+-  [ ] seperate build into sub-project & use prune option for electron-packager
+-  [ ] figure out branding
