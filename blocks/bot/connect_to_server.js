@@ -1,5 +1,3 @@
-// /blockfactory/#bot_connect_to_server
-
 var val = require('../utils').val
 
 Blockly.Blocks['bot_connect_to_server'] = {
@@ -47,4 +45,3 @@ var bot = mineflayer.createBot({
 ${statements_do}
 `
 }
-

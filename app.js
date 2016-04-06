@@ -5,14 +5,8 @@ const hl = require('highlight.js').highlight
 const beautify = require('js-beautify').js_beautify
 const dialog = electron.remote.require('dialog')
 const fs = require('fs')
-
+const mineflayer = require('mineflayer')
 const VM = require('vm2').VM
-var vm = new VM({
-  timeout: 1000,
-  sandbox: {
-    mineflayer: require('mineflayer')
-  }
-})
 
 require('./blocks/common')
 require('./blocks/bot')
@@ -25,9 +19,6 @@ const filters = [
 ]
 
 var codestyle = fs.readFileSync('node_modules/highlight.js/styles/github.css').toString()
-
-var blocklyDiv = document.getElementById('blocklyDiv')
-var blocklyArea = document.getElementById('blocklyArea')
 
 var template = [
   {
@@ -58,6 +49,12 @@ var template = [
         label: 'Run',
         accelerator: 'CmdOrCtrl+R',
         click: function (item, focusedWindow) {
+          var vm = new VM({
+            timeout: 1000,
+            sandbox: {
+              mineflayer: mineflayer
+            }
+          })
           const code = Blockly.JavaScript.workspaceToCode(window.workspace)
           vm.run(code)
         }
@@ -233,7 +230,7 @@ if (process.platform === 'darwin') {
 var menu = electron.remote.Menu.buildFromTemplate(template)
 electron.remote.Menu.setApplicationMenu(menu)
 
-const workspace = window.Blockly.inject(blocklyDiv, {
+const workspace = window.Blockly.inject(document.getElementById('blocklyDiv'), {
   toolbox: document.getElementById('blocklyToolbox'),
   trashcan: true,
   zoom: {
@@ -246,23 +243,3 @@ const workspace = window.Blockly.inject(blocklyDiv, {
   },
   media: 'blockly/media/'
 })
-
-// TODO: this sucks and only half-works.
-function onresize (e) {
-  var element = blocklyArea
-  var x = 0
-  var y = 0
-  do {
-    x += element.offsetLeft
-    y += element.offsetTop
-    element = element.offsetParent
-  } while (element)
-  // Position blocklyDiv over blocklyArea.
-  blocklyDiv.style.left = x + 'px'
-  blocklyDiv.style.top = y + 'px'
-  blocklyDiv.style.width = blocklyArea.offsetWidth + 'px'
-  blocklyDiv.style.height = blocklyArea.offsetHeight + 'px'
-}
-
-window.addEventListener('resize', onresize, false)
-onresize()

@@ -1,5 +1,3 @@
-// /blockfactory/#bot_whisper
-
 Blockly.Blocks['bot_whisper'] = {
   init: function () {
     this.appendDummyInput()

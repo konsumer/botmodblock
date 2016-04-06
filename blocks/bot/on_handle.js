@@ -1,5 +1,3 @@
-// /blockfactory/#bot_on_handle
-
 var eventTypes = {
   'chat': 'username, message, translate, jsonMsg, matches',
   'whisper': 'username, message, translate, jsonMsg, matches',
@@ -57,7 +55,8 @@ var eventTypes = {
   'experience': '',
   'scoreboardObjective': 'scoreboardName, displayText',
   'scoreboardScore': 'scoreboardName, itemName, value',
-  'scoreboardDisplayObjective': 'scoreboardName, position'
+  'scoreboardDisplayObjective': 'scoreboardName, position',
+  'error': 'error'
 }
 
 Blockly.Blocks['bot_on_handle'] = {

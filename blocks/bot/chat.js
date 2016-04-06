@@ -1,5 +1,3 @@
-// /blockfactory/#bot_chat
-
 Blockly.Blocks['bot_chat'] = {
   init: function () {
     this.appendValueInput('MESSAGE')

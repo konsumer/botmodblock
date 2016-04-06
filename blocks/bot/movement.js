@@ -1,5 +1,3 @@
-// TODO: check if it's in an on-block or if top-in is bot.
-
 Blockly.Blocks['bot_forward_on'] = {
   init: function () {
     this.appendDummyInput()

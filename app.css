@@ -201,13 +201,9 @@ button:hover:not(:disabled)>* {
   user-select: none;
 }
 
-#blocklyArea {
+#blocklyDiv {
   width: 100vw;
   height: 100vh;
-}
-
-#blocklyDiv {
-  position: absolute;
 }
 
 #blocklyToolbox {

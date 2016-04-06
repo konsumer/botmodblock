@@ -1,5 +1,3 @@
-// /blockfactory/#bot_is_raining
-
 Blockly.Blocks['bot_is_raining'] = {
   init: function () {
     this.appendDummyInput()

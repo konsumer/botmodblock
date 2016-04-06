@@ -1,7 +1,3 @@
-// /blockfactory/#data_block
-// /blockfactory/#data_instrument
-// /blockfactory/#data_item
-
 // TODO: validate this is in a bot flow
 
 function generic_info (block) {
