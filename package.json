@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Learn Computer Science through Minecraft",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "build": "electron-packager . --all"
   },
   "author": "David Konsumer <konsumer@jetboystudio.com>",
   "license": "MIT",
@@ -14,6 +15,7 @@
     "vm2": "^2.0.0"
   },
   "devDependencies": {
-    "electron-prebuilt": "^0.36.0"
+    "electron-prebuilt": "^0.36.0",
+    "electron-packager": "^6.0.0"
   }
 }
