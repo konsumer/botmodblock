@@ -42,4 +42,4 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 -  [ ] use electron-packager ignore to get node_modules down to the bare minimum
 -  [ ] figure out branding
 -  [ ] auto-update code window
--  [ ] follow ideas [here](https://www.youtube.com/watch?v=H4sSldXv_S4) to make better editor, 2-way block/code & safer server-side thread (detect endless loops, etc)
+-  [ ] follow ideas [here](https://www.youtube.com/watch?v=H4sSldXv_S4) to make better editor, 2-way block/code, helpful hints & challenge framework & safer server-side thread (detect endless loops, etc)
