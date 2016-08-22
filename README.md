@@ -23,6 +23,7 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 
 
 #### todo
+-  [ ] add block factory to app as menu option (for faster building of blocks)
 -  [X] get it running as standalone app in electron
 -  [ ] as a demo implement [helperbot](https://www.npmjs.com/package/helperbot) in blocks
 -  [ ] as a demo imlement [rbot](https://github.com/rom1504/rbot) in blocks
@@ -43,4 +44,5 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 -  [ ] use electron-packager ignore to get node_modules down to the bare minimum
 -  [ ] figure out branding
 -  [ ] auto-update code window
+-  [ ] copy block factory idea for default `any` values for Inputs instead of text-fields
 -  [ ] follow ideas [here](https://www.youtube.com/watch?v=H4sSldXv_S4) to make better editor, 2-way block/code, helpful hints & challenge framework & safer server-side thread (detect endless loops, etc)

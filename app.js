@@ -8,6 +8,8 @@ const fs = require('fs')
 const mineflayer = require('mineflayer')
 const VM = require('vm2').VM
 
+const factory = window.location.toString().indexOf('factory.html') !== -1
+
 require('./blocks/common')
 require('./blocks/bot')
 require('./blocks/mod')
@@ -138,6 +140,19 @@ var template = [
             focusedWindow.toggleDevTools()
           }
         }
+      },
+      {
+        label: factory ? 'botmodblock' : 'Block Factory',
+        accelerator: 'Command+Alt+B',
+        click: function (item, focusedWindow) {
+          if (focusedWindow) {
+            if (factory) {
+              window.location = 'index.html'
+            } else {
+              window.location = 'factory.html'
+            }
+          }
+        }
       }
     ]
   },
@@ -241,3 +256,8 @@ const workspace = window.Blockly.inject(document.getElementById('blocklyDiv'), {
   },
   media: 'blockly/media/'
 })
+
+if (factory) {
+  var xml = '<xml><block type="factory_base" deletable="false" movable="false"></block></xml>'
+  Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace)
+}
