@@ -37,6 +37,7 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 -  [ ] use `utils.val()` for every val usage
 -  [X] write validation functions in `util` for in-block & top-is-bot
 -  [ ] add blockfactory back so I can open/save source for blocks
+-  [ ] look at [code studio](https://studio.code.org) for inspiration. I like what they do with callbacks in flappybird
 -  [ ] improve run error-handling & timeout
 -  [ ] seperate build into sub-project & use prune option for electron-packager
 -  [ ] use electron-packager ignore to get node_modules down to the bare minimum
