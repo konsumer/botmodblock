@@ -261,6 +261,7 @@ window.workspace.addChangeListener(Blockly.Events.disableOrphans)
 
 function getCode () {
   var code
+  // I wish generators worked with Blockly.JavaScript.workspaceToCode, but they don't...
   if (factory) {
     var rootBlock = window.getRootBlock()
     var blockType = rootBlock.getFieldValue('NAME').trim().toLowerCase()
@@ -282,11 +283,6 @@ function getCode () {
   return code
 }
 
-function updateFactoryPreview () {
-  getCode()
-  window.previewWorkspace.clearUndo()
-}
-
 if (factory) {
   window.previewWorkspace = window.Blockly.inject(document.getElementById('factoryPreview'), {
     scrollbars: true,
@@ -294,5 +290,6 @@ if (factory) {
   })
   var xml = '<xml><block type="factory_base" deletable="false" movable="false"></block></xml>'
   Blockly.Xml.domToWorkspace(window.Blockly.Xml.textToDom(xml), window.workspace)
-  window.workspace.addChangeListener(updateFactoryPreview)
+  // getCode updates preview window
+  window.workspace.addChangeListener(getCode)
 }

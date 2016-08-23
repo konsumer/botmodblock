@@ -114,8 +114,8 @@ button:hover:not(:disabled)>* {
   position:absolute;
   top: 20px;
   right: 20px;
-  width: 50%;
-  height: 50%;
+  width: 300px;
+  height: 200px;
   background: #fff;
   opacity: 0.5;
 }
