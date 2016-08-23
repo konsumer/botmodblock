@@ -18,32 +18,45 @@ Run `npm install` to get dependencies, and `npm start` to start the local server
 
 ### minecraft server
 
-You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run server-side code. [Here](https://github.com/walterhiggins/ScriptCraft/blob/master/README.md) is a great guide for getting started with that. Defintely go the canarymod route, as this code has only been tested with that (not bukkit.) Use version 1.8 so bots will work.
+You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run server-side code, and although you can run bots on any server running 1.8, it's going to be easier to just setup your own. [Here](https://github.com/walterhiggins/ScriptCraft/blob/master/README.md) is a great guide for getting started with that. Definitely go the canarymod route, as this code has only been tested with that (not bukkit.) Use version 1.8 so bots will work.
 
 
 
 #### todo
--  [ ] add block factory to app as menu option (for faster building of blocks)
--  [ ] better eval with `new Function()`, drop vm2
--  [X] get it running as standalone app in electron
--  [ ] as a demo implement [helperbot](https://www.npmjs.com/package/helperbot) in blocks
--  [ ] as a demo imlement [rbot](https://github.com/rom1504/rbot) in blocks
+
+##### features
+
 -  [ ] complete support for [mineflayer](https://github.com/PrismarineJS/mineflayer)
 -  [ ] use these: mineflayer-blockfinder, mineflayer-navigate, mineflayer-scaffold
--  [ ] look at [App Inventor](http://ai2.appinventor.mit.edu/) for inspiration (especially with procedures) ([source](https://github.com/mit-cml/appinventor-sources))
--  [ ] get ideas from [modmaker](http://inspiredtoeducate.net/modmaker/)
--  [X] add backend run support
 -  [ ] reference vars for "time" blocks, so they can be canceled
--  [ ] callback arguments added to UI
+-  [ ] callback arguments added automatically to variable list
 -  [ ] turtle-like commands for bot
 -  [ ] use `utils.val()` for every val usage
--  [X] write validation functions in `util` for in-block & top-is-bot
--  [ ] add blockfactory back so I can open/save source for blocks
--  [ ] look at [code studio](https://studio.code.org) for inspiration. I like what they do with callbacks in flappybird
 -  [ ] improve run error-handling & timeout
 -  [ ] seperate build into sub-project & use prune option for electron-packager
--  [ ] use electron-packager ignore to get node_modules down to the bare minimum
 -  [ ] figure out branding
--  [ ] auto-update code window
+-  [ ] auto-update code window (so it updates when you make changes to blocks)
+-  [ ] follow ideas [here](https://www.youtube.com/watch?v=H4sSldXv_S4) to make better editor, 2-way block/code, helpful hints & challenge framework & safer server-side thread (detect endless loops, etc.) Huge updates & will have to drop blockly, which is big.
+-  [ ] update minecraft version (relies on [this](https://github.com/PrismarineJS/prismarine-chunk/issues/19) to be resolved)
+-  [X] use electron-packager ignore to get node_modules down to the bare minimum
+-  [X] better eval with `new Function()`, drop vm2
+-  [X] add backend run support
+-  [X] get it running as standalone app in electron
+-  [X] add block factory to app as menu option (for faster building of blocks)
+-  [X] write validation functions in `util` for in-block & top-is-bot
+
+
+##### inspiration
+
+copy ideas from these:
+
+-  [ ] [App Inventor](http://ai2.appinventor.mit.edu/) (especially with procedures) ([source](https://github.com/mit-cml/appinventor-sources))
+-  [ ] [code studio](https://studio.code.org). I like what they do with callbacks in flappybird
+-  [ ] [modmaker](http://inspiredtoeducate.net/modmaker/)
 -  [ ] copy block factory idea for default `any` values for Inputs instead of text-fields
--  [ ] follow ideas [here](https://www.youtube.com/watch?v=H4sSldXv_S4) to make better editor, 2-way block/code, helpful hints & challenge framework & safer server-side thread (detect endless loops, etc)
+
+
+##### demos
+
+-  [ ] implement [helperbot](https://www.npmjs.com/package/helperbot) in blocks
+-  [ ] implement [rbot](https://github.com/rom1504/rbot) in blocks

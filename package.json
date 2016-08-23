@@ -4,7 +4,7 @@
   "description": "Learn Computer Science through Minecraft",
   "scripts": {
     "start": "electron main.js",
-    "build": "electron-packager . --all --overwrite --ignore='screenshot.png|README.md|.gitignore'",
+    "build": "electron-packager . --prune --all --overwrite --ignore='screenshot.png|README.md|.gitignore'",
     "zip": "for i in botmodblock-*; do cd $i && zip -r -9 ~/Desktop/$i.zip . ; cd .. ;done"
   },
   "main": "main.js",
@@ -14,8 +14,7 @@
     "highlight.js": "^9.2.0",
     "js-beautify": "^1.6.2",
     "mineflayer": "^1.7.3",
-    "standard-format": "^2.2.2",
-    "vm2": "^2.0.0"
+    "standard-format": "^2.2.2"
   },
   "devDependencies": {
     "electron-prebuilt": "^0.36.0",

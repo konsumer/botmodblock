@@ -6,7 +6,6 @@ const beautify = require('js-beautify').js_beautify
 const dialog = electron.remote.require('dialog')
 const fs = require('fs')
 const mineflayer = require('mineflayer')
-const VM = require('vm2').VM
 const format = require('standard-format').transform
 
 const factory = window.location.toString().indexOf('factory.html') !== -1
@@ -50,14 +49,15 @@ var template = [
         label: 'Run',
         accelerator: 'CmdOrCtrl+R',
         click: function (item, focusedWindow) {
-          var vm = new VM({
-            timeout: 1000,
-            sandbox: {
-              mineflayer: mineflayer
-            }
-          })
-          const code = Blockly.JavaScript.workspaceToCode(window.workspace)
-          vm.run(code)
+          const code = getCode()
+          var func = new Function('mineflayer', code) // eslint-disable-line no-new-func
+          try {
+            func(mineflayer)
+          } catch (e) {
+            window.alert('There was an error with your code (see developer console.)')
+            console.log(code)
+            console.error(e)
+          }
         }
       }
     ]
