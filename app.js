@@ -7,6 +7,7 @@ const dialog = electron.remote.require('dialog')
 const fs = require('fs')
 const mineflayer = require('mineflayer')
 const VM = require('vm2').VM
+const format = require('standard-format').transform
 
 const factory = window.location.toString().indexOf('factory.html') !== -1
 
@@ -260,7 +261,8 @@ window.workspace = window.Blockly.inject(document.getElementById('blocklyDiv'), 
 window.workspace.addChangeListener(Blockly.Events.disableOrphans)
 
 function getCode () {
-  return factory ? window.factoryCode() : Blockly.JavaScript.workspaceToCode(window.workspace)
+  var code = factory ? window.factoryCode() : Blockly.JavaScript.workspaceToCode(window.workspace)
+  return format(code)
 }
 
 if (factory) {
