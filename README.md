@@ -24,6 +24,7 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 
 #### todo
 -  [ ] add block factory to app as menu option (for faster building of blocks)
+-  [ ] better eval with `new Function()`, drop vm2
 -  [X] get it running as standalone app in electron
 -  [ ] as a demo implement [helperbot](https://www.npmjs.com/package/helperbot) in blocks
 -  [ ] as a demo imlement [rbot](https://github.com/rom1504/rbot) in blocks

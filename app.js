@@ -30,7 +30,7 @@ var template = [
         click: function (item, focusedWindow) {
           dialog.showOpenDialog({filters: filters}, function (filename) {
             var xml = Blockly.Xml.textToDom(fs.readFileSync(filename[0]))
-            Blockly.Xml.domToWorkspace(workspace, xml)
+            Blockly.Xml.domToWorkspace(window.workspace, xml)
           })
         }
       },
@@ -39,9 +39,9 @@ var template = [
         accelerator: 'CmdOrCtrl+S',
         click: function (item, focusedWindow) {
           dialog.showSaveDialog({filters: filters}, function (filename) {
-            var xml = Blockly.Xml.workspaceToDom(workspace)
-            var xml_text = Blockly.Xml.domToText(xml)
-            fs.writeFileSync(filename, xml_text)
+            var xml = Blockly.Xml.workspaceToDom(window.workspace)
+            var xmlText = Blockly.Xml.domToText(xml)
+            fs.writeFileSync(filename, xmlText)
           })
         }
       },
@@ -106,7 +106,7 @@ var template = [
         label: 'Code',
         accelerator: 'Shift+CmdOrCtrl+C',
         click: function (item, focusedWindow) {
-          var code = Blockly.JavaScript.workspaceToCode(window.workspace)
+          var code = getCode()
           const html = '<head><link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/monokai-sublime.min.css"><style>body {font-family: \'Source Code Pro\', ;color: #f8f8f2; background: #23241f}</style></head><body><pre><code>' + hl('javascript', beautify(code)).value + '</code></pre></body>'
           window.open('data:text/html,' + encodeURIComponent(html))
         }
@@ -243,7 +243,7 @@ if (process.platform === 'darwin') {
 var menu = electron.remote.Menu.buildFromTemplate(template)
 electron.remote.Menu.setApplicationMenu(menu)
 
-const workspace = window.Blockly.inject(document.getElementById('blocklyDiv'), {
+window.workspace = window.Blockly.inject(document.getElementById('blocklyDiv'), {
   toolbox: document.getElementById('blocklyToolbox'),
   trashcan: true,
   zoom: {
@@ -257,7 +257,42 @@ const workspace = window.Blockly.inject(document.getElementById('blocklyDiv'), {
   media: 'blockly/media/'
 })
 
+window.workspace.addChangeListener(Blockly.Events.disableOrphans)
+
+function getCode () {
+  var code
+  if (factory) {
+    var rootBlock = window.getRootBlock()
+    var blockType = rootBlock.getFieldValue('NAME').trim().toLowerCase()
+    var codeBlock = window.formatJavaScript_(blockType, rootBlock)
+    eval(codeBlock)
+
+    window.previewWorkspace.clear()
+    var previewBlock = window.previewWorkspace.newBlock(blockType)
+    previewBlock.initSvg()
+    previewBlock.render()
+    previewBlock.setMovable(false)
+    previewBlock.setDeletable(false)
+
+    var codeGenerator = window.updateGenerator(previewBlock)
+    code = codeBlock + '\n\n' + codeGenerator
+  } else {
+    code = Blockly.JavaScript.workspaceToCode(window.workspace)
+  }
+  return code
+}
+
+function updateFactoryPreview () {
+  getCode()
+  window.previewWorkspace.clearUndo()
+}
+
 if (factory) {
+  window.previewWorkspace = window.Blockly.inject(document.getElementById('factoryPreview'), {
+    scrollbars: true,
+    media: 'blockly/media/'
+  })
   var xml = '<xml><block type="factory_base" deletable="false" movable="false"></block></xml>'
-  Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace)
+  Blockly.Xml.domToWorkspace(window.Blockly.Xml.textToDom(xml), window.workspace)
+  window.workspace.addChangeListener(updateFactoryPreview)
 }

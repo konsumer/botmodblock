@@ -800,3 +800,354 @@ function inputNameCheck(referenceBlock) {
       'There are ' + count + ' input blocks\n with this name.' : null;
   referenceBlock.setWarningText(msg);
 }
+
+//////
+
+/**
+ * Update the language code as JavaScript.
+ * @param {string} blockType Name of block.
+ * @param {!Blockly.Block} rootBlock Factory_base block.
+ * @return {string} Generanted language code.
+ * @private
+ */
+function formatJavaScript_(blockType, rootBlock) {
+  var code = [];
+  code.push("Blockly.Blocks['" + blockType + "'] = {");
+  code.push("  init: function() {");
+  // Generate inputs.
+  var TYPES = {'input_value': 'appendValueInput',
+               'input_statement': 'appendStatementInput',
+               'input_dummy': 'appendDummyInput'};
+  var contentsBlock = rootBlock.getInputTargetBlock('INPUTS');
+  while (contentsBlock) {
+    if (!contentsBlock.disabled && !contentsBlock.getInheritedDisabled()) {
+      var name = '';
+      // Dummy inputs don't have names.  Other inputs do.
+      if (contentsBlock.type != 'input_dummy') {
+        name = escapeString(contentsBlock.getFieldValue('INPUTNAME'));
+      }
+      code.push('    this.' + TYPES[contentsBlock.type] + '(' + name + ')');
+      var check = getOptTypesFrom(contentsBlock, 'TYPE');
+      if (check) {
+        code.push('        .setCheck(' + check + ')');
+      }
+      var align = contentsBlock.getFieldValue('ALIGN');
+      if (align != 'LEFT') {
+        code.push('        .setAlign(Blockly.ALIGN_' + align + ')');
+      }
+      var fields = getFieldsJs_(contentsBlock.getInputTargetBlock('FIELDS'));
+      for (var i = 0; i < fields.length; i++) {
+        code.push('        .appendField(' + fields[i] + ')');
+      }
+      // Add semicolon to last line to finish the statement.
+      code[code.length - 1] += ';';
+    }
+    contentsBlock = contentsBlock.nextConnection &&
+        contentsBlock.nextConnection.targetBlock();
+  }
+  // Generate inline/external switch.
+  if (rootBlock.getFieldValue('INLINE') == 'EXT') {
+    code.push('    this.setInputsInline(false);');
+  } else if (rootBlock.getFieldValue('INLINE') == 'INT') {
+    code.push('    this.setInputsInline(true);');
+  }
+  // Generate output, or next/previous connections.
+  switch (rootBlock.getFieldValue('CONNECTIONS')) {
+    case 'LEFT':
+      code.push(connectionLineJs_('setOutput', 'OUTPUTTYPE'));
+      break;
+    case 'BOTH':
+      code.push(connectionLineJs_('setPreviousStatement', 'TOPTYPE'));
+      code.push(connectionLineJs_('setNextStatement', 'BOTTOMTYPE'));
+      break;
+    case 'TOP':
+      code.push(connectionLineJs_('setPreviousStatement', 'TOPTYPE'));
+      break;
+    case 'BOTTOM':
+      code.push(connectionLineJs_('setNextStatement', 'BOTTOMTYPE'));
+      break;
+  }
+  // Generate colour.
+  var colourBlock = rootBlock.getInputTargetBlock('COLOUR');
+  if (colourBlock && !colourBlock.disabled) {
+    var hue = parseInt(colourBlock.getFieldValue('HUE'), 10);
+    if (!isNaN(hue)) {
+      code.push('    this.setColour(' + hue + ');');
+    }
+  }
+  code.push("    this.setTooltip('');");
+  code.push("    this.setHelpUrl('http://www.example.com/');");
+  code.push('  }');
+  code.push('};');
+  return code.join('\n');
+}
+
+/**
+ * Create JS code required to create a top, bottom, or value connection.
+ * @param {string} functionName JavaScript function name.
+ * @param {string} typeName Name of type input.
+ * @return {string} Line of JavaScript code to create connection.
+ * @private
+ */
+function connectionLineJs_(functionName, typeName) {
+  var type = getOptTypesFrom(getRootBlock(), typeName);
+  if (type) {
+    type = ', ' + type;
+  } else {
+    type = '';
+  }
+  return '    this.' + functionName + '(true' + type + ');';
+}
+
+/**
+ * Returns field strings and any config.
+ * @param {!Blockly.Block} block Input block.
+ * @return {!Array.<string>} Field strings.
+ * @private
+ */
+function getFieldsJs_(block) {
+  var fields = [];
+  while (block) {
+    if (!block.disabled && !block.getInheritedDisabled()) {
+      switch (block.type) {
+        case 'field_static':
+          // Result: 'hello'
+          fields.push(escapeString(block.getFieldValue('TEXT')));
+          break;
+        case 'field_input':
+          // Result: new Blockly.FieldTextInput('Hello'), 'GREET'
+          fields.push('new Blockly.FieldTextInput(' +
+              escapeString(block.getFieldValue('TEXT')) + '), ' +
+              escapeString(block.getFieldValue('FIELDNAME')));
+          break;
+        case 'field_number':
+          // Result: new Blockly.FieldNumber(10, 0, 100, 1), 'NUMBER'
+          var args = [
+            Number(block.getFieldValue('VALUE')),
+            Number(block.getFieldValue('MIN')),
+            Number(block.getFieldValue('MAX')),
+            Number(block.getFieldValue('PRECISION'))
+          ];
+          // Remove any trailing arguments that aren't needed.
+          if (args[3] == 0) {
+            args.pop();
+            if (args[2] == Infinity) {
+              args.pop();
+              if (args[1] == -Infinity) {
+                args.pop();
+              }
+            }
+          }
+          fields.push('new Blockly.FieldNumber(' + args.join(', ') + '), ' +
+              escapeString(block.getFieldValue('FIELDNAME')));
+          break;
+        case 'field_angle':
+          // Result: new Blockly.FieldAngle(90), 'ANGLE'
+          fields.push('new Blockly.FieldAngle(' +
+              Number(block.getFieldValue('ANGLE')) + '), ' +
+              escapeString(block.getFieldValue('FIELDNAME')));
+          break;
+        case 'field_checkbox':
+          // Result: new Blockly.FieldCheckbox('TRUE'), 'CHECK'
+          fields.push('new Blockly.FieldCheckbox(' +
+              escapeString(block.getFieldValue('CHECKED')) + '), ' +
+              escapeString(block.getFieldValue('FIELDNAME')));
+          break;
+        case 'field_colour':
+          // Result: new Blockly.FieldColour('#ff0000'), 'COLOUR'
+          fields.push('new Blockly.FieldColour(' +
+              escapeString(block.getFieldValue('COLOUR')) + '), ' +
+              escapeString(block.getFieldValue('FIELDNAME')));
+          break;
+        case 'field_date':
+          // Result: new Blockly.FieldDate('2015-02-04'), 'DATE'
+          fields.push('new Blockly.FieldDate(' +
+              escapeString(block.getFieldValue('DATE')) + '), ' +
+              escapeString(block.getFieldValue('FIELDNAME')));
+          break;
+        case 'field_variable':
+          // Result: new Blockly.FieldVariable('item'), 'VAR'
+          var varname = escapeString(block.getFieldValue('TEXT') || null);
+          fields.push('new Blockly.FieldVariable(' + varname + '), ' +
+              escapeString(block.getFieldValue('FIELDNAME')));
+          break;
+        case 'field_dropdown':
+          // Result:
+          // new Blockly.FieldDropdown([['yes', '1'], ['no', '0']]), 'TOGGLE'
+          var options = [];
+          for (var i = 0; i < block.optionCount_; i++) {
+            options[i] = '[' + escapeString(block.getFieldValue('USER' + i)) +
+                ', ' + escapeString(block.getFieldValue('CPU' + i)) + ']';
+          }
+          if (options.length) {
+            fields.push('new Blockly.FieldDropdown([' +
+                options.join(', ') + ']), ' +
+                escapeString(block.getFieldValue('FIELDNAME')));
+          }
+          break;
+        case 'field_image':
+          // Result: new Blockly.FieldImage('http://...', 80, 60, '*')
+          var src = escapeString(block.getFieldValue('SRC'));
+          var width = Number(block.getFieldValue('WIDTH'));
+          var height = Number(block.getFieldValue('HEIGHT'));
+          var alt = escapeString(block.getFieldValue('ALT'));
+          fields.push('new Blockly.FieldImage(' +
+              src + ', ' + width + ', ' + height + ', ' + alt + ')');
+          break;
+      }
+    }
+    block = block.nextConnection && block.nextConnection.targetBlock();
+  }
+  return fields;
+}
+
+/**
+ * Escape a string.
+ * @param {string} string String to escape.
+ * @return {string} Escaped string surrouned by quotes.
+ */
+function escapeString(string) {
+  return JSON.stringify(string);
+}
+
+/**
+ * Fetch the type(s) defined in the given input.
+ * Format as a string for appending to the generated code.
+ * @param {!Blockly.Block} block Block with input.
+ * @param {string} name Name of the input.
+ * @return {?string} String defining the types.
+ */
+function getOptTypesFrom(block, name) {
+  var types = getTypesFrom_(block, name);
+  if (types.length == 0) {
+    return undefined;
+  } else if (types.indexOf('null') != -1) {
+    return 'null';
+  } else if (types.length == 1) {
+    return types[0];
+  } else {
+    return '[' + types.join(', ') + ']';
+  }
+}
+
+/**
+ * Fetch the type(s) defined in the given input.
+ * @param {!Blockly.Block} block Block with input.
+ * @param {string} name Name of the input.
+ * @return {!Array.<string>} List of types.
+ * @private
+ */
+function getTypesFrom_(block, name) {
+  var typeBlock = block.getInputTargetBlock(name);
+  var types;
+  if (!typeBlock || typeBlock.disabled) {
+    types = [];
+  } else if (typeBlock.type == 'type_other') {
+    types = [escapeString(typeBlock.getFieldValue('TYPE'))];
+  } else if (typeBlock.type == 'type_group') {
+    types = [];
+    for (var i = 0; i < typeBlock.typeCount_; i++) {
+      types = types.concat(getTypesFrom_(typeBlock, 'TYPE' + i));
+    }
+    // Remove duplicates.
+    var hash = Object.create(null);
+    for (var n = types.length - 1; n >= 0; n--) {
+      if (hash[types[n]]) {
+        types.splice(n, 1);
+      }
+      hash[types[n]] = true;
+    }
+  } else {
+    types = [escapeString(typeBlock.valueType)];
+  }
+  return types;
+}
+
+/**
+ * Update the generator code.
+ * @param {!Blockly.Block} block Rendered block in preview workspace.
+ */
+function updateGenerator(block) {
+  function makeVar(root, name) {
+    name = name.toLowerCase().replace(/\W/g, '_');
+    return '  var ' + root + '_' + name;
+  }
+  var language = 'Javascript';
+  var code = [];
+  code.push("Blockly." + language + "['" + block.type +
+            "'] = function(block) {");
+
+  // Generate getters for any fields or inputs.
+  for (var i = 0, input; input = block.inputList[i]; i++) {
+    for (var j = 0, field; field = input.fieldRow[j]; j++) {
+      var name = field.name;
+      if (!name) {
+        continue;
+      }
+      if (field instanceof Blockly.FieldVariable) {
+        // Subclass of Blockly.FieldDropdown, must test first.
+        code.push(makeVar('variable', name) +
+                  " = Blockly." + language +
+                  ".variableDB_.getName(block.getFieldValue('" + name +
+                  "'), Blockly.Variables.NAME_TYPE);");
+      } else if (field instanceof Blockly.FieldAngle) {
+        // Subclass of Blockly.FieldTextInput, must test first.
+        code.push(makeVar('angle', name) +
+                  " = block.getFieldValue('" + name + "');");
+      } else if (Blockly.FieldDate && field instanceof Blockly.FieldDate) {
+        // Blockly.FieldDate may not be compiled into Blockly.
+        code.push(makeVar('date', name) +
+                  " = block.getFieldValue('" + name + "');");
+      } else if (field instanceof Blockly.FieldColour) {
+        code.push(makeVar('colour', name) +
+                  " = block.getFieldValue('" + name + "');");
+      } else if (field instanceof Blockly.FieldCheckbox) {
+        code.push(makeVar('checkbox', name) +
+                  " = block.getFieldValue('" + name + "') == 'TRUE';");
+      } else if (field instanceof Blockly.FieldDropdown) {
+        code.push(makeVar('dropdown', name) +
+                  " = block.getFieldValue('" + name + "');");
+      } else if (field instanceof Blockly.FieldNumber) {
+        code.push(makeVar('number', name) +
+                  " = block.getFieldValue('" + name + "');");
+      } else if (field instanceof Blockly.FieldTextInput) {
+        code.push(makeVar('text', name) +
+                  " = block.getFieldValue('" + name + "');");
+      }
+    }
+    var name = input.name;
+    if (name) {
+      if (input.type == Blockly.INPUT_VALUE) {
+        code.push(makeVar('value', name) +
+                  " = Blockly." + language + ".valueToCode(block, '" + name +
+                  "', Blockly." + language + ".ORDER_ATOMIC);");
+      } else if (input.type == Blockly.NEXT_STATEMENT) {
+        code.push(makeVar('statements', name) +
+                  " = Blockly." + language + ".statementToCode(block, '" +
+                  name + "');");
+      }
+    }
+  }
+  code.push("  // TODO: Assemble " + language + " into code variable.");
+  if (block.outputConnection) {
+    code.push("  var code = '...';");
+    code.push("  // TODO: Change ORDER_NONE to the correct strength.");
+    code.push("  return [code, Blockly." + language + ".ORDER_NONE];");
+  } else {
+    code.push("  var code = '...\\n';");
+    code.push("  return code;");
+  }
+  code.push("};");
+
+  return code.join('\n');
+}
+
+function getRootBlock() {
+  var blocks = window.workspace.getTopBlocks(false);
+  for (var i = 0, block; block = blocks[i]; i++) {
+    if (block.type == 'factory_base') {
+      return block;
+    }
+  }
+  return null;
+}
