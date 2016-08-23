@@ -18,7 +18,7 @@ Run `npm install` to get dependencies, and `npm start` to start the local server
 
 ### minecraft server
 
-You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run server-side code, and although you can run bots on any server running 1.8, it's going to be easier to just setup your own. [Here](https://github.com/walterhiggins/ScriptCraft/blob/master/README.md) is a great guide for getting started with that. Definitely go the canarymod route, as this code has only been tested with that (not bukkit.) Use version 1.8 so bots will work.
+You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run server-side mod code, and although you can run bots on any server running 1.8, it's going to be easier to just setup your own. [Here](https://github.com/walterhiggins/ScriptCraft/blob/master/README.md) is a great guide for getting started with that. Definitely go the canarymod route, as this code has only been tested with that (not bukkit.) Use version 1.8 so bots will work.
 
 
 
@@ -38,6 +38,7 @@ You will need to setup a [scriptcraft](http://scriptcraftjs.org/) server to run 
 -  [ ] auto-update code window (so it updates when you make changes to blocks)
 -  [ ] follow ideas [here](https://www.youtube.com/watch?v=H4sSldXv_S4) to make better editor, 2-way block/code, helpful hints & challenge framework & safer server-side thread (detect endless loops, etc.) Huge updates & will have to drop blockly, which is big.
 -  [ ] update minecraft version (relies on [this](https://github.com/PrismarineJS/prismarine-chunk/issues/19) to be resolved)
+-  [ ] count bots to avoid var collision (`var bot1 = ...`, `var bot2 = ...`, etc)
 -  [X] use electron-packager ignore to get node_modules down to the bare minimum
 -  [X] better eval with `new Function()`, drop vm2
 -  [X] add backend run support
