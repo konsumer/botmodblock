@@ -1152,6 +1152,7 @@ function getRootBlock() {
   return null;
 }
 
+// update preview and generate all code
 function factoryCode () {
   var rootBlock = getRootBlock()
   var blockType = rootBlock.getFieldValue('NAME').trim().toLowerCase()
