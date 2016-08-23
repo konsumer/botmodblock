@@ -1151,3 +1151,20 @@ function getRootBlock() {
   }
   return null;
 }
+
+function factoryCode () {
+  var rootBlock = getRootBlock()
+  var blockType = rootBlock.getFieldValue('NAME').trim().toLowerCase()
+  var codeBlock = formatJavaScript_(blockType, rootBlock)
+  eval(codeBlock)
+
+  window.previewWorkspace.clear()
+  var previewBlock = window.previewWorkspace.newBlock(blockType)
+  previewBlock.initSvg()
+  previewBlock.render()
+  previewBlock.setMovable(false)
+  previewBlock.setDeletable(false)
+  var codeGenerator = updateGenerator(previewBlock)
+
+  return codeBlock + '\n\n' + codeGenerator
+}

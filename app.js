@@ -260,27 +260,7 @@ window.workspace = window.Blockly.inject(document.getElementById('blocklyDiv'), 
 window.workspace.addChangeListener(Blockly.Events.disableOrphans)
 
 function getCode () {
-  var code
-  // I wish generators worked with Blockly.JavaScript.workspaceToCode, but they don't...
-  if (factory) {
-    var rootBlock = window.getRootBlock()
-    var blockType = rootBlock.getFieldValue('NAME').trim().toLowerCase()
-    var codeBlock = window.formatJavaScript_(blockType, rootBlock)
-    eval(codeBlock)
-
-    window.previewWorkspace.clear()
-    var previewBlock = window.previewWorkspace.newBlock(blockType)
-    previewBlock.initSvg()
-    previewBlock.render()
-    previewBlock.setMovable(false)
-    previewBlock.setDeletable(false)
-
-    var codeGenerator = window.updateGenerator(previewBlock)
-    code = codeBlock + '\n\n' + codeGenerator
-  } else {
-    code = Blockly.JavaScript.workspaceToCode(window.workspace)
-  }
-  return code
+  return factory ? window.factoryCode() : Blockly.JavaScript.workspaceToCode(window.workspace)
 }
 
 if (factory) {
